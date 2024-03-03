@@ -302,7 +302,7 @@
             "tag": "Singapore",
             "type": "urltest",
             "outbounds": [
-                "include: 🇸🇬|SG|sg|新加坡|狮|Singapore"
+                "include: Singapore|🇸🇬|SG|sg|新加坡|狮|Singapore"
             ],
             "url": "http://www.gstatic.com/generate_204",
             "interval": "30m",
@@ -312,7 +312,7 @@
             "tag": "Japan",
             "type": "urltest",
             "outbounds": [
-                "include: 🇯🇵|JP|jp|日本|日|Japan"
+                "include: 東京|🇯🇵|JP|jp|日本|日|Japan"
             ],
             "url": "http://www.gstatic.com/generate_204",
             "interval": "30m",
@@ -322,7 +322,7 @@
             "tag": "Korea",
             "type": "urltest",
             "outbounds": [
-                "include: 🇰🇷|KR|kr|韩国|韩|Korea"
+                "include: 서울|🇰🇷|KR|kr|韩国|韩|Korea"
             ],
             "url": "http://www.gstatic.com/generate_204",
             "interval": "30m",
@@ -332,7 +332,7 @@
             "tag": "America",
             "type": "urltest",
             "outbounds": [
-                "include: 🇺🇸|US|us|美国|美|United States"
+                "include: Oregon|🇺🇸|US|us|美国|美|United States"
             ],
             "url": "http://www.gstatic.com/generate_204",
             "interval": "30m",
@@ -342,7 +342,7 @@
             "tag": "Others",
             "type": "selector",
             "outbounds": [
-                "exclude: 禁止回国|最新官网|国际区|国内区|济南|杭州|徐州|广东|河南|香港|台湾|新加坡|日本|韩国|美国"
+                "exclude: 最新官网|禁止回国|🏠 官网|🚧 遇到问题先查看使用文档|剩余流量|加入TG群组看优惠码|国际区|国内区|济南|杭州|徐州|广东|河南|香港|台湾|Singapore|新加坡|東京|日本|서울|韩国|订阅到期|Oregon|美国"
             ]
         },
         {
