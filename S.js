@@ -20,22 +20,25 @@ config.outbounds.map(i => {
     i.outbounds.push(...getTags(proxies))
   }
   if (['HongKong'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /港|hk|hongkong|kong kong|🇭🇰/i))
+    i.outbounds.push(...getTags(proxies, /港|香港|hk|hongkong|kong kong|🇭🇰/i))
+  }
+  if (['China'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /浙江|徐州|杭州|济南|🇨🇳/i))
   }
   if (['TaiWan'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /台|tw|taiwan|🇹🇼/i))
+    i.outbounds.push(...getTags(proxies, /台|台灣|tw|taiwan|🇹🇼/i))
   }
   if (['Japan'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /日本|jp|japan|🇯🇵/i))
+    i.outbounds.push(...getTags(proxies, /日本|東京都|jp|japan|🇯🇵/i))
   }
   if (['Singapore'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /^(?!.*(?:us)).*(新|sg|singapore|🇸🇬)/i))
   }
   if (['America'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
+    i.outbounds.push(...getTags(proxies, /美|us|Oregon|unitedstates|united states|united states|🇺🇸/i))
   }
   if (['Korea'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /韩|kr|Korea|🇰🇷/i))
+    i.outbounds.push(...getTags(proxies, /韩|kr|서울|Korea|🇰🇷/i))
   }
 })
 
