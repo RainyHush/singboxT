@@ -334,10 +334,6 @@
         "outbound": "block"
       },
       {
-        "rule_set": "geosite-category-ads-all",
-        "outbound": "AdBlock"
-      },
-      {
         "clash_mode": "direct",
         "outbound": "中国节点"
       },
@@ -355,20 +351,40 @@
         "outbound": "中国节点"
       },
       {
+        "rule_set": "geosite-category-ads-all",
+        "outbound": "AdBlock"
+      },
+      {
+      	"rule_set": "geosite-private",
+      	"outbound": "中国节点"
+      },
+      {
+      	"ip_is_private": true,
+      	"outbound": "中国节点"
+      },
+      {
+      	"rule_set": "geoip-cn",
+      	"outbound": "中国节点"
+      },
+      {
+      	"rule_set": "geosite-cn",
+      	"outbound": "中国节点"
+      },
+      {
         "rule_set": "geosite-openai",
         "outbound": "OpenAI"
       },
       {
+      	"rule_set": "geoip-google",
+      	"outbound": "Google"
+      },
+      {
+      	"rule_set": "geosite-google",
+      	"outbound": "Google"
+      },
+      {
         "rule_set": "geosite-youtube",
         "outbound": "YouTube"
-      },
-      {
-        "rule_set": "geoip-google",
-        "outbound": "Google"
-      },
-      {
-        "rule_set": "geosite-google",
-        "outbound": "Google"
       },
       {
         "rule_set": "geosite-github",
@@ -393,25 +409,38 @@
       {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "节点选择"
-      },
-      {
-        "rule_set": "geosite-private",
-        "outbound": "中国节点"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "中国节点"
-      },
-      {
-        "rule_set": "geoip-cn",
-        "outbound": "中国节点"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "outbound": "中国节点"
       }
+      
     ],
     "rule_set": [
+    	{
+    		"tag": "geosite-private",
+    		"type": "remote",
+    		"format": "binary",
+    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+    		"download_detour": "节点选择"
+    	},
+    	{
+    		"tag": "geoip-cn",
+    		"type": "remote",
+    		"format": "binary",
+    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+    		"download_detour": "节点选择"
+    	},
+    	{
+    		"tag": "geosite-cn",
+    		"type": "remote",
+    		"format": "binary",
+    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+    		"download_detour": "节点选择"
+    	},
+    	{
+    		"tag": "geosite-openai",
+    		"type": "remote",
+    		"format": "binary",
+    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
+    		"download_detour": "节点选择"
+    	},
       {
         "tag": "geoip-google",
         "type": "remote",
@@ -420,52 +449,31 @@
         "download_detour": "节点选择"
       },
       {
+      	"tag": "geosite-google",
+      	"type": "remote",
+      	"format": "binary",
+      	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+      	"download_detour": "节点选择"
+      },
+      {
+      	"tag": "geosite-youtube",
+      	"type": "remote",
+      	"format": "binary",
+      	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
+      	"download_detour": "节点选择"
+      },
+      {
+      	"tag": "geosite-github",
+      	"type": "remote",
+      	"format": "binary",
+      	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
+      	"download_detour": "节点选择"
+      },
+      {
         "tag": "geoip-telegram",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geoip-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geosite-private",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geosite-openai",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geosite-youtube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geosite-google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geosite-github",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
         "download_detour": "节点选择"
       },
       {
@@ -487,13 +495,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-        "download_detour": "节点选择"
-      },
-      {
-        "tag": "geosite-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
         "download_detour": "节点选择"
       },
       {
