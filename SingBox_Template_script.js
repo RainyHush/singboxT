@@ -1,8 +1,8 @@
 
 let config = JSON.parse($files[0])
 let proxies = await produceArtifact({
-  name: '总订阅',
-  type: 'subscription',
+  name: '总订阅2',
+  type: 'collection',//collection or subscription
   platform: 'sing-box',
   produceType: 'internal',
 })
