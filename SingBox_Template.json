@@ -418,98 +418,112 @@
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-    		"download_detour": "节点选择"
+    		"download_detour": "节点选择",
+    		"update_interval": "1d"
     	},
     	{
     		"tag": "geoip-cn",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-    		"download_detour": "节点选择"
+    		"download_detour": "节点选择",
+    		"update_interval": "1d"
     	},
     	{
     		"tag": "geosite-cn",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-    		"download_detour": "节点选择"
+    		"download_detour": "节点选择",
+    		"update_interval": "1d"
     	},
     	{
     		"tag": "geosite-openai",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
-    		"download_detour": "节点选择"
+    		"download_detour": "节点选择",
+    		"update_interval": "1d"
     	},
       {
         "tag": "geoip-google",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       },
       {
       	"tag": "geosite-google",
       	"type": "remote",
       	"format": "binary",
       	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-      	"download_detour": "节点选择"
+      	"download_detour": "节点选择",
+      	"update_interval": "1d"
       },
       {
       	"tag": "geosite-youtube",
       	"type": "remote",
       	"format": "binary",
       	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-      	"download_detour": "节点选择"
+      	"download_detour": "节点选择",
+      	"update_interval": "1d"
       },
       {
       	"tag": "geosite-github",
       	"type": "remote",
       	"format": "binary",
       	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-      	"download_detour": "节点选择"
+      	"download_detour": "节点选择",
+      	"update_interval": "1d"
       },
       {
         "tag": "geoip-telegram",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       },
       {
         "tag": "geosite-telegram",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       },
       {
         "tag": "geosite-spotify",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       },
       {
         "tag": "geosite-microsoft",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       },
       {
         "tag": "geosite-geolocation-!cn",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       },
       {
         "tag": "geosite-category-ads-all",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
-        "download_detour": "节点选择"
+        "download_detour": "节点选择",
+        "update_interval": "1d"
       }
     ]
   }
