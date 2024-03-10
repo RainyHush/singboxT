@@ -139,7 +139,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🇯🇵 日本节点",
@@ -147,7 +147,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🇼🇸 台湾节点",
@@ -155,7 +155,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🇸🇬 狮城节点",
@@ -163,7 +163,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🇰🇷 韩国节点",
@@ -171,7 +171,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🇺🇸 美国节点",
@@ -179,7 +179,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🇨🇳 中国节点",
@@ -187,7 +187,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
     	"tag": "🏁 其它节点",
@@ -195,7 +195,7 @@
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
     	"interval": "15m",
-    	"tolerance": 100
+    	"tolerance": 50
     },
     {
       "tag": "OpenAI",
