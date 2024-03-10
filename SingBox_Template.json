@@ -58,8 +58,7 @@
       },
       {
         "outbound": "any",
-        "server": "localDns",
-        "disable_cache": true
+        "server": "GoogleDns"
       },
       {
         "rule_set": "geosite-cn",
@@ -88,16 +87,18 @@
       }
     ],
     "final": "GoogleDNS",
-    "independent_cache": true
+    "independent_cache": false
   },
   "inbounds": [
     {
-      "tag": "tun",
+      "tag": "tun-in",
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
-      "stack": "system",
+      "mtu": 9000,
+      "stack": "mixed",
       "auto_route": true,
+      "strict_route": true,
       "sniff": true,
       "platform": {
         "http_proxy": {
@@ -108,17 +109,11 @@
       }
     },
     {
-      "tag": "mixed",
+      "tag": "mixed-in",
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 7890,
-      "sniff": true
-    },
-    {
-      "tag": "loop-in",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7891,
+    
       "sniff": true,
       "domain_strategy": "prefer_ipv4"
     }
@@ -355,7 +350,7 @@
           "yacd.haishan.me",
           "d.metacubex.one"
         ],
-        "outbound": "🇨🇳 中国节点"
+        "outbound": "节点选择"
       },
       {
         "rule_set": "geosite-category-ads-all",
