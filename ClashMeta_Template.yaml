@@ -1,0 +1,214 @@
+#基础配置
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+allow-lan: true
+bind-address: "*"
+mode: rule
+log-level: info
+ipv6: false
+unified-delay: true
+tcp-concurrent: true
+keep-alive-interval: 1800
+external-controller: 127.0.0.1:9090
+external-ui: /path/to/ui/folder/
+external-ui-name: folder
+secret: "123456"
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+profile:
+  store-selected: true
+  store-fake-ip: true
+geox-url:
+  geoip: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  geosite: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://hub.gitmirror.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+ntp:
+  enable: true
+  write-to-system: false
+  server: time.apple.com
+  port: 123
+  interval: 30
+#域名嗅探
+sniffer:
+  enable: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+tun:
+  enable: true  # enable 'true'
+  stack: system  # or 'gvisor'
+  mtu: 9000
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+#DNS配置
+dns:
+  enable: true
+  listen: :1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+  default-nameserver:
+    - 223.5.5.5
+  nameserver:
+    - "https://doh.pub/dns-query#中国节点"
+    - "https://dns.alidns.com/dns-query#中国节点"
+  proxy-server-nameserver:
+    - "https://doh.pub/dns-query#中国节点"
+  nameserver-policy:
+    "rule-set:ChinaMax_Domain,ChinaMax":
+      - "https://doh.pub/dns-query#中国节点"
+      - "https://dns.alidns.com/dns-query#中国节点"
+    "rule-set:Global":
+      - "https://dns.cloudflare.com/dns-query#节点选择"
+      - "https://dns.google/dns-query#节点选择"
+
+#锚点
+pr:
+  &proxies
+  type: select
+  proxies:
+    - 日本节点
+    - 香港节点
+    - 美国节点
+    - 台湾节点
+    - 中国节点
+    - 狮城节点
+    - 韩国节点
+    - 其它节点
+p:
+  &a1
+  type: http
+  interval: 86400
+  health-check:
+    enable: true
+    url: http://www.gstatic.com/generate_204
+    interval: 1800
+auto:
+  &fallback
+  type: fallback
+  lazy: true
+  url: http://www.gstatic.com/generate_204
+  interval: 900
+  use:
+    - Subscribe
+urlt:
+  &urltest
+  type: url-test
+  lazy: true
+  url: http://www.gstatic.com/generate_204
+  interval: 900
+  tolerance: 50
+  use:
+    - Subscribe
+load:
+  &loadbalance
+  type: load-balance
+  lazy: true
+  strategy: round-robin
+  url: http://www.gstatic.com/generate_204
+  interval: 900
+  use:
+    - Subscribe
+use:
+  &select
+  type: select
+  use:
+    - Subscribe
+c:
+  &classical
+  type: http
+  behavior: classical
+  interval: 86400
+d:
+  &domain
+  type: http
+  behavior: domain
+  interval: 86400
+i:
+  &ipcidr
+  type: http
+  behavior: ipcidr
+  interval: 86400
+proxy-providers:
+  Subscribe:
+    <<: *a1
+    url: https://shudian-sub.hf.space/2cXaAxRGfddmGz2yx1wArainyhush/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta
+    path: ./proxy_providers/tmp.yaml
+
+
+proxies: null
+proxy-groups:
+#分流分组
+  - name: 节点选择
+    <<: *proxies
+#节点分组
+  - name: 香港节点
+    <<: *urltest
+    filter: 港|HK|(?i)Hong Kong
+  - name: 日本节点
+    <<: *urltest
+    filter: 日|東京|东京|JP|(?i)Japan
+  - name: 台湾节点
+    <<: *urltest
+    filter: 台|湾|TW|(?i)Taiwan
+  - name: 中国节点
+    <<: *urltest
+    filter: 济南|徐州|广州移动|广州|广东|杭州|(?i)浙江
+  - name: 美国节点
+    <<: *urltest
+    filter: 美|US|(?i)States|American|Oregon
+  - name: 狮城节点
+    <<: *urltest
+    filter: 新|坡|SG|(?i)Singapore
+  - name: 韩国节点
+    <<: *urltest
+    filter: 韩|서울|kr|(?i)Korea
+  - name: 其它节点
+    <<: *loadbalance
+    exclude-filter: 韩|Korea|서울|kr|新加坡|Singapore|美国|Oregon|台湾|日本|Japan|東京|香港|Hong Kong|济南|广东|杭州|广州|广州移动|徐州|浙江
+  - name: AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - 节点选择
+#规则
+rule-providers:
+  Direct:
+    <<: *classical
+    url: https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Direct/Direct.yaml
+  AdvertisingLite:
+    <<: *classical
+    url: https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Advertising/Advertising_Classical.yaml
+  ChinaMax:
+    <<: *classical
+    url: https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/ChinaMax/ChinaMax.yaml
+  ChinaMax_Domain:
+    <<: *domain
+    url: https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml
+  ChinaMax_IP:
+    <<: *ipcidr
+    url: https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/ChinaMax/ChinaMax_IP.yaml
+  Global:
+    <<: *classical
+    url: https://github.com/blackmatrix7/ios_rule_script/raw/master/rule/Clash/Global/Global_Classical.yaml
+rules:
+  - RULE-SET,Direct,中国节点
+  - RULE-SET,AdvertisingLite,AdBlock
+  - RULE-SET,ChinaMax,中国节点
+  - RULE-SET,ChinaMax_Domain,中国节点
+  - RULE-SET,ChinaMax_IP,中国节点
+  - RULE-SET,Global,节点选择
+  - GEOIP,CN,中国节点
+  - MATCH,节点选择

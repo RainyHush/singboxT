@@ -63,7 +63,7 @@
       },
       {
         "rule_set": "geosite-cn",
-        "server": "localDns"
+        "server": "GoogleDNS"
       },
       {
         "clash_mode": "direct",
