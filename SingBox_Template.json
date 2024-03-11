@@ -320,7 +320,6 @@
   "route": {
     "auto_detect_interface": true,
     "override_android_vpn": true,
-    "final": "节点选择",
     "rules": [
       {
         "protocol": "dns",
@@ -414,6 +413,7 @@
       }
       
     ],
+    "final": "节点选择",
     "rule_set": [
     	{
     		"tag": "geosite-private",
