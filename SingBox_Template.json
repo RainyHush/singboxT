@@ -1,130 +1,131 @@
 {
-  "log": {
-    "level": "debug",
-    "timestamp": true
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "127.0.0.1:9090",
-      "external_ui": "ui",
-      "secret": "",
-      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
-      "external_ui_download_detour": "direct",
-      "default_mode": "rule"
-    },
-    "cache_file": {
-      "enabled": true,
-      "store_fakeip": true
-    }
-  },
-  "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "servers": [
-      {
-        "tag": "GoogleDNS",
-        "address": "tls://8.8.8.8",
-        "detour": "Proxy"
+	"log": {
+		"level": "debug",
+		"timestamp": true
+	},
+	"experimental": {
+		"clash_api": {
+			"external_controller": "127.0.0.1:9090",
+			"external_ui": "ui",
+			"secret": "",
+			"external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+			"external_ui_download_detour": "China",
+			"default_mode": "rule"
+		},
+		"cache_file": {
+			"enabled": true,
+			"store_fakeip": true
+		}
+	},
+	"dns": {
+		"fakeip": {
+			"enabled": true,
+			"inet4_range": "198.18.0.0/15",
+			"inet6_range": "fc00::/18"
+		},
+		"servers": [
+			{
+				"tag": "GoogleDNS",
+				"address": "https://1.1.1.1/dns-query",
+				"detour": "Proxy"
       },
-      {
-        "tag": "localDns",
-        "address": "https://223.5.5.5/dns-query",
-        "detour": "China"
+			{
+				"tag": "localDns",
+				"address": "https://223.6.6.6/dns-query",
+				"detour": "China"
       },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
+			{
+				"tag": "fakeip",
+				"address": "fakeip"
       },
-      {
-        "tag": "block",
-        "address": "rcode://success"
+			{
+				"tag": "block",
+				"address": "rcode://success"
       }
     ],
-    "rules": [
-      {
-        "domain": [
+		"rules": [
+			{
+				"domain": [
           "ghproxy.com",
           "cdn.jsdelivr.net",
           "testingcf.jsdelivr.net"
         ],
-        "server": "fakeip"
+				"server": "fakeip"
       },
-      {
-        "rule_set": "广告域名",
-        "server": "block"
+			{
+				"rule_set": "广告域名",
+				"server": "block"
       },
-      {
-        "outbound": "any",
-        "server": "GoogleDns"
+			{
+				"outbound": "any",
+				"server": "GoogleDns",
+				"disable_cache": true
       },
-      {
-        "rule_set": "国内域名",
-        "server": "GoogleDNS"
+			{
+				"rule_set": "国内域名",
+				"server": "localDns"
       },
-      {
-        "clash_mode": "direct",
-        "server": "localDns"
+			{
+				"clash_mode": "direct",
+				"server": "localDns"
       },
-      {
-        "clash_mode": "global",
-        "server": "fakeip"
+			{
+				"clash_mode": "global",
+				"server": "fakeip"
       },
-      {
-        "inbound": "tun",
-        "query_type": [
+			{
+				"inbound": "tun-in",
+				"query_type": [
           "A",
           "AAAA"
         ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
+				"server": "fakeip",
+				"rewrite_ttl": 1
       },
-      {
-        "rule_set": "国外域名",
-        "server": "GoogleDNS"
+			{
+				"rule_set": "国外域名",
+				"server": "GoogleDNS"
       }
     ],
-    "final": "GoogleDNS",
-    "strategy": "prefer_ipv4",
-    "reverse_mapping": true,
-    "independent_cache": true
-  },
-  "inbounds": [
-    {
-      "tag": "tun-in",
-      "type": "tun",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::0/126",
-      "mtu": 9000,
-      "stack": "mixed",
-      "auto_route": true,
-      "strict_route": true,
-      "sniff": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": true,
-          "server": "127.0.0.1",
-          "server_port": 7890
-        }
-      }
+		"final": "GoogleDNS",
+		"strategy": "prefer_ipv4",
+		"reverse_mapping": true,
+		"independent_cache": true
+	},
+	"inbounds": [
+		{
+			"tag": "tun-in",
+			"type": "tun",
+			"inet4_address": "172.19.0.0/30",
+			"inet6_address": "fdfe:dcba:9876::0/126",
+			"mtu": 9000,
+			"stack": "mixed",
+			"auto_route": true,
+			"strict_route": true,
+			"sniff": true,
+			"platform": {
+				"http_proxy": {
+					"enabled": true,
+					"server": "127.0.0.1",
+					"server_port": 7890
+				}
+			}
     },
-    {
-      "tag": "mixed-in",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 7890,
-    
-      "sniff": true,
-      "domain_strategy": "prefer_ipv4"
+		{
+			"tag": "mixed-in",
+			"type": "mixed",
+			"listen": "127.0.0.1",
+			"listen_port": 7890,
+
+			"sniff": true,
+			"domain_strategy": "prefer_ipv4"
     }
   ],
-  "outbounds": [
-    {
-      "tag": "Proxy",
-      "type": "selector",
-      "outbounds": [
+	"outbounds": [
+		{
+			"tag": "Proxy",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -133,76 +134,76 @@
         "America",
         "Others"
       ],
-      "default": "Japan"
+			"default": "Japan"
     },
-    {
-    	"tag": "Hong Kong",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "Hong Kong",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "Japan",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "Japan",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "TaiWan",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "TaiWan",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "Singapore",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "Singapore",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "Korea",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "Korea",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "America",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "America",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "China",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "China",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-    	"tag": "Others",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
-    	"tolerance": 50
+		{
+			"tag": "Others",
+			"type": "urltest",
+			"outbounds": [],
+			"url": "http://www.gstatic.com/generate_204",
+			"interval": "15m",
+			"tolerance": 50
     },
-    {
-      "tag": "OpenAI",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "OpenAI",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -211,12 +212,12 @@
         "America",
         "Others"
       ],
-      "default": "America"
+			"default": "America"
     },
-    {
-      "tag": "Google",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "Google",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -225,12 +226,12 @@
         "America",
         "Others"
       ],
-      "default": "Singapore"
+			"default": "Singapore"
     },
-    {
-      "tag": "YouTube",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "YouTube",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -239,12 +240,12 @@
         "America",
         "Others"
       ],
-      "default": "Singapore"
+			"default": "Singapore"
     },
-    {
-      "tag": "GitHub",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "GitHub",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -253,12 +254,12 @@
         "America",
         "Others"
       ],
-      "default": "Japan"
+			"default": "Japan"
     },
-    {
-      "tag": "Telegram",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "Telegram",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -267,12 +268,12 @@
         "America",
         "Others"
       ],
-      "default": "Japan"
+			"default": "Japan"
     },
-    {
-      "tag": "Spotify",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "Spotify",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -281,12 +282,12 @@
         "America",
         "Others"
       ],
-      "default": "America"
+			"default": "America"
     },
-    {
-      "tag": "Microsoft",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "Microsoft",
+			"type": "selector",
+			"outbounds": [
         "Hong Kong",
         "Japan",
         "TaiWan",
@@ -295,240 +296,240 @@
         "America",
         "Others"
       ],
-      "default": "Japan"
+			"default": "Japan"
     },
-    {
-      "tag": "AdBlock",
-      "type": "selector",
-      "outbounds": [
+		{
+			"tag": "AdBlock",
+			"type": "selector",
+			"outbounds": [
         "block",
         "Proxy",
         "Others"
       ]
     },
-    {
-      "type": "direct",
-      "tag": "direct"
+		{
+			"type": "direct",
+			"tag": "direct"
     },
-    {
-      "type": "dns",
-      "tag": "dns-out"
+		{
+			"type": "dns",
+			"tag": "dns-out"
     },
-    {
-      "type": "block",
-      "tag": "block"
+		{
+			"type": "block",
+			"tag": "block"
     }
   ],
-  "route": {
-    "auto_detect_interface": true,
-    "override_android_vpn": true,
-    "rules": [
-      {
-        "protocol": "dns",
-        "outbound": "dns-out"
+	"route": {
+		"auto_detect_interface": true,
+		"override_android_vpn": true,
+		"rules": [
+			{
+				"protocol": "dns",
+				"outbound": "dns-out"
       },
-      {
-        "port": 53,
-        "outbound": "dns-out"
+			{
+				"port": 53,
+				"outbound": "dns-out"
       },
-      {
-        "network": "udp",
-        "port": 443,
-        "outbound": "block"
+			{
+				"network": "udp",
+				"port": 443,
+				"outbound": "block"
       },
-      {
-        "clash_mode": "direct",
-        "outbound": "China"
+			{
+				"clash_mode": "direct",
+				"outbound": "China"
       },
-      {
-        "clash_mode": "global",
-        "outbound": "Proxy"
+			{
+				"clash_mode": "global",
+				"outbound": "Proxy"
       },
-      {
-        "domain": [
+			{
+				"domain": [
           "clash.razord.top",
           "yacd.metacubex.one",
           "yacd.haishan.me",
           "d.metacubex.one"
         ],
-        "outbound": "Proxy"
+				"outbound": "Proxy"
       },
-      {
-        "rule_set": "广告域名",
-        "outbound": "AdBlock"
+			{
+				"rule_set": "广告域名",
+				"outbound": "AdBlock"
       },
-      {
-      	"rule_set": "私有域名",
-      	"outbound": "China"
+			{
+				"rule_set": "私有域名",
+				"outbound": "China"
       },
-      {
-      	"ip_is_private": true,
-      	"outbound": "China"
+			{
+				"ip_is_private": true,
+				"outbound": "China"
       },
-      {
-      	"rule_set": "国内IP",
-      	"outbound": "China"
+			{
+				"rule_set": "国内IP",
+				"outbound": "China"
       },
-      {
-      	"rule_set": "国内域名",
-      	"outbound": "China"
+			{
+				"rule_set": "国内域名",
+				"outbound": "China"
       },
-      {
-        "rule_set": "OpenAI域名",
-        "outbound": "OpenAI"
+			{
+				"rule_set": "OpenAI域名",
+				"outbound": "OpenAI"
       },
-      {
-      	"rule_set": "GoogleIP",
-      	"outbound": "Google"
+			{
+				"rule_set": "GoogleIP",
+				"outbound": "Google"
       },
-      {
-      	"rule_set": "Google域名",
-      	"outbound": "Google"
+			{
+				"rule_set": "Google域名",
+				"outbound": "Google"
       },
-      {
-        "rule_set": "YouTube域名",
-        "outbound": "YouTube"
+			{
+				"rule_set": "YouTube域名",
+				"outbound": "YouTube"
       },
-      {
-        "rule_set": "GitHub域名",
-        "outbound": "GitHub"
+			{
+				"rule_set": "GitHub域名",
+				"outbound": "GitHub"
       },
-      {
-        "rule_set": "TelegramIP",
-        "outbound": "Telegram"
+			{
+				"rule_set": "TelegramIP",
+				"outbound": "Telegram"
       },
-      {
-        "rule_set": "Telegram域名",
-        "outbound": "Telegram"
+			{
+				"rule_set": "Telegram域名",
+				"outbound": "Telegram"
       },
-      {
-        "rule_set": "Spotify域名",
-        "outbound": "Spotify"
+			{
+				"rule_set": "Spotify域名",
+				"outbound": "Spotify"
       },
-      {
-        "rule_set": "Microsoft域名",
-        "outbound": "Microsoft"
+			{
+				"rule_set": "Microsoft域名",
+				"outbound": "Microsoft"
       },
-      {
-        "rule_set": "国外域名",
-        "outbound": "Proxy"
+			{
+				"rule_set": "国外域名",
+				"outbound": "Proxy"
       }
-      
+
     ],
-    "final": "Proxy",
-    "rule_set": [
-    	{
-    		"tag": "私有域名",
-    		"type": "remote",
-    		"format": "binary",
-    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-    		"download_detour": "Proxy",
-    		"update_interval": "1d"
+		"final": "Proxy",
+		"rule_set": [
+			{
+				"tag": "私有域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
     	},
-    	{
-    		"tag": "国内IP",
-    		"type": "remote",
-    		"format": "binary",
-    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-    		"download_detour": "Proxy",
-    		"update_interval": "1d"
+			{
+				"tag": "国内IP",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
     	},
-    	{
-    		"tag": "国内域名",
-    		"type": "remote",
-    		"format": "binary",
-    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-    		"download_detour": "Proxy",
-    		"update_interval": "1d"
+			{
+				"tag": "国内域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
     	},
-    	{
-    		"tag": "OpenAI域名",
-    		"type": "remote",
-    		"format": "binary",
-    		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
-    		"download_detour": "Proxy",
-    		"update_interval": "1d"
+			{
+				"tag": "OpenAI域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
     	},
-      {
-        "tag": "GoogleIP",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "GoogleIP",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-      	"tag": "Google域名",
-      	"type": "remote",
-      	"format": "binary",
-      	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-      	"download_detour": "Proxy",
-      	"update_interval": "1d"
+			{
+				"tag": "Google域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-      	"tag": "YouTube域名",
-      	"type": "remote",
-      	"format": "binary",
-      	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-      	"download_detour": "Proxy",
-      	"update_interval": "1d"
+			{
+				"tag": "YouTube域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-      	"tag": "GitHub域名",
-      	"type": "remote",
-      	"format": "binary",
-      	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-      	"download_detour": "Proxy",
-      	"update_interval": "1d"
+			{
+				"tag": "GitHub域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-        "tag": "TelegramIP",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "TelegramIP",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-        "tag": "Telegram域名",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "Telegram域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-        "tag": "Spotify域名",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "Spotify域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-        "tag": "Microsoft域名",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "Microsoft域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-        "tag": "国外域名",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "国外域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       },
-      {
-        "tag": "广告域名",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
+			{
+				"tag": "广告域名",
+				"type": "remote",
+				"format": "binary",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+				"download_detour": "Proxy",
+				"update_interval": "1d"
       }
     ]
-  }
+	}
 }
