@@ -14,7 +14,7 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false
+      "store_fakeip": true
     }
   },
   "dns": {
@@ -32,7 +32,7 @@
       {
         "tag": "localDns",
         "address": "https://223.5.5.5/dns-query",
-        "detour": "🇨🇳 中国节点"
+        "detour": "🇨🇳 国内节点"
       },
       {
         "tag": "fakeip",
@@ -53,7 +53,7 @@
         "server": "fakeip"
       },
       {
-        "rule_set": "geosite-category-ads-all",
+        "rule_set": "广告域名",
         "server": "block"
       },
       {
@@ -61,7 +61,7 @@
         "server": "GoogleDns"
       },
       {
-        "rule_set": "geosite-cn",
+        "rule_set": "国内域名",
         "server": "GoogleDNS"
       },
       {
@@ -82,12 +82,14 @@
         "rewrite_ttl": 1
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": "国外域名",
         "server": "GoogleDNS"
       }
     ],
     "final": "GoogleDNS",
-    "independent_cache": false
+    "strategy": "prefer_ipv4",
+    "reverse_mapping": true,
+    "independent_cache": true
   },
   "inbounds": [
     {
@@ -182,7 +184,7 @@
     	"tolerance": 50
     },
     {
-    	"tag": "🇨🇳 中国节点",
+    	"tag": "🇨🇳 国内节点",
     	"type": "urltest",
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
@@ -336,7 +338,7 @@
       },
       {
         "clash_mode": "direct",
-        "outbound": "🇨🇳 中国节点"
+        "outbound": "🇨🇳 国内节点"
       },
       {
         "clash_mode": "global",
@@ -352,63 +354,63 @@
         "outbound": "节点选择"
       },
       {
-        "rule_set": "geosite-category-ads-all",
+        "rule_set": "广告域名",
         "outbound": "AdBlock"
       },
       {
-      	"rule_set": "geosite-private",
-      	"outbound": "🇨🇳 中国节点"
+      	"rule_set": "私有域名",
+      	"outbound": "🇨🇳 国内节点"
       },
       {
       	"ip_is_private": true,
-      	"outbound": "🇨🇳 中国节点"
+      	"outbound": "🇨🇳 国内节点"
       },
       {
-      	"rule_set": "geoip-cn",
-      	"outbound": "🇨🇳 中国节点"
+      	"rule_set": "国内IP",
+      	"outbound": "🇨🇳 国内节点"
       },
       {
-      	"rule_set": "geosite-cn",
-      	"outbound": "🇨🇳 中国节点"
+      	"rule_set": "国内域名",
+      	"outbound": "🇨🇳 国内节点"
       },
       {
-        "rule_set": "geosite-openai",
+        "rule_set": "OpenAI域名",
         "outbound": "OpenAI"
       },
       {
-      	"rule_set": "geoip-google",
+      	"rule_set": "GoogleIP",
       	"outbound": "Google"
       },
       {
-      	"rule_set": "geosite-google",
+      	"rule_set": "Google域名",
       	"outbound": "Google"
       },
       {
-        "rule_set": "geosite-youtube",
+        "rule_set": "YouTube域名",
         "outbound": "YouTube"
       },
       {
-        "rule_set": "geosite-github",
+        "rule_set": "GitHub域名",
         "outbound": "GitHub"
       },
       {
-        "rule_set": "geoip-telegram",
+        "rule_set": "TelegramIP",
         "outbound": "Telegram"
       },
       {
-        "rule_set": "geosite-telegram",
+        "rule_set": "Telegram域名",
         "outbound": "Telegram"
       },
       {
-        "rule_set": "geosite-spotify",
+        "rule_set": "Spotify域名",
         "outbound": "Spotify"
       },
       {
-        "rule_set": "geosite-microsoft",
+        "rule_set": "Microsoft域名",
         "outbound": "Microsoft"
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
+        "rule_set": "国外域名",
         "outbound": "节点选择"
       }
       
@@ -416,7 +418,7 @@
     "final": "节点选择",
     "rule_set": [
     	{
-    		"tag": "geosite-private",
+    		"tag": "私有域名",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
@@ -424,7 +426,7 @@
     		"update_interval": "1d"
     	},
     	{
-    		"tag": "geoip-cn",
+    		"tag": "国内IP",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
@@ -432,7 +434,7 @@
     		"update_interval": "1d"
     	},
     	{
-    		"tag": "geosite-cn",
+    		"tag": "国内域名",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
@@ -440,7 +442,7 @@
     		"update_interval": "1d"
     	},
     	{
-    		"tag": "geosite-openai",
+    		"tag": "OpenAI域名",
     		"type": "remote",
     		"format": "binary",
     		"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
@@ -448,7 +450,7 @@
     		"update_interval": "1d"
     	},
       {
-        "tag": "geoip-google",
+        "tag": "GoogleIP",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
@@ -456,7 +458,7 @@
         "update_interval": "1d"
       },
       {
-      	"tag": "geosite-google",
+      	"tag": "Google域名",
       	"type": "remote",
       	"format": "binary",
       	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
@@ -464,7 +466,7 @@
       	"update_interval": "1d"
       },
       {
-      	"tag": "geosite-youtube",
+      	"tag": "YouTube域名",
       	"type": "remote",
       	"format": "binary",
       	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
@@ -472,7 +474,7 @@
       	"update_interval": "1d"
       },
       {
-      	"tag": "geosite-github",
+      	"tag": "GitHub域名",
       	"type": "remote",
       	"format": "binary",
       	"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
@@ -480,7 +482,7 @@
       	"update_interval": "1d"
       },
       {
-        "tag": "geoip-telegram",
+        "tag": "TelegramIP",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
@@ -488,7 +490,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-telegram",
+        "tag": "Telegram域名",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
@@ -496,7 +498,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-spotify",
+        "tag": "Spotify域名",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
@@ -504,7 +506,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-microsoft",
+        "tag": "Microsoft域名",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
@@ -512,7 +514,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-geolocation-!cn",
+        "tag": "国外域名",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
@@ -520,7 +522,7 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-category-ads-all",
+        "tag": "广告域名",
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
