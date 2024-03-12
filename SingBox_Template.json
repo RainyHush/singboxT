@@ -17,6 +17,7 @@
 			"store_fakeip": true
 		}
 	},
+
 	"dns": {
 		"fakeip": {
 			"enabled": true,
@@ -53,7 +54,7 @@
 				"server": "fakeip"
       },
 			{
-				"rule_set": "广告域名",
+				"rule_set": "geosite-category-ads-all",
 				"server": "block"
       },
 			{
@@ -62,7 +63,7 @@
 				"disable_cache": true
       },
 			{
-				"rule_set": "国内域名",
+				"rule_set": "geosite-cn",
 				"server": "localDns"
       },
 			{
@@ -83,7 +84,7 @@
 				"rewrite_ttl": 1
       },
 			{
-				"rule_set": "国外域名",
+				"rule_set": "geosite-geolocation-!cn",
 				"server": "GoogleDNS"
       }
     ],
@@ -121,6 +122,7 @@
 			"domain_strategy": "prefer_ipv4"
     }
   ],
+
 	"outbounds": [
 		{
 			"tag": "Proxy",
@@ -355,11 +357,11 @@
 				"outbound": "Proxy"
       },
 			{
-				"rule_set": "广告域名",
+				"rule_set": "geosite-category-ads-all",
 				"outbound": "AdBlock"
       },
 			{
-				"rule_set": "私有域名",
+				"rule_set": "geosite-private",
 				"outbound": "China"
       },
 			{
@@ -367,51 +369,51 @@
 				"outbound": "China"
       },
 			{
-				"rule_set": "国内IP",
+				"rule_set": "geoip-cn",
 				"outbound": "China"
       },
 			{
-				"rule_set": "国内域名",
+				"rule_set": "geosite-cn",
 				"outbound": "China"
       },
 			{
-				"rule_set": "OpenAI域名",
+				"rule_set": "geosite-OpenAI",
 				"outbound": "OpenAI"
       },
 			{
-				"rule_set": "GoogleIP",
+				"rule_set": "geoip-Google",
 				"outbound": "Google"
       },
 			{
-				"rule_set": "Google域名",
+				"rule_set": "geosite-Google",
 				"outbound": "Google"
       },
 			{
-				"rule_set": "YouTube域名",
+				"rule_set": "geosite-YouTube",
 				"outbound": "YouTube"
       },
 			{
-				"rule_set": "GitHub域名",
+				"rule_set": "geosite-GitHub",
 				"outbound": "GitHub"
       },
 			{
-				"rule_set": "TelegramIP",
+				"rule_set": "geoip-Telegram",
 				"outbound": "Telegram"
       },
 			{
-				"rule_set": "Telegram域名",
+				"rule_set": "geosite-Telegram",
 				"outbound": "Telegram"
       },
 			{
-				"rule_set": "Spotify域名",
+				"rule_set": "geosite-Spotify",
 				"outbound": "Spotify"
       },
 			{
-				"rule_set": "Microsoft域名",
+				"rule_set": "geosite-Microsoft",
 				"outbound": "Microsoft"
       },
 			{
-				"rule_set": "国外域名",
+				"rule_set": "geosite-geolocation-!cn",
 				"outbound": "Proxy"
       }
 
@@ -419,7 +421,7 @@
 		"final": "Proxy",
 		"rule_set": [
 			{
-				"tag": "私有域名",
+				"tag": "geosite-private",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
@@ -427,7 +429,7 @@
 				"update_interval": "1d"
     	},
 			{
-				"tag": "国内IP",
+				"tag": "geoip-cn",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
@@ -435,7 +437,7 @@
 				"update_interval": "1d"
     	},
 			{
-				"tag": "国内域名",
+				"tag": "geosite-cn",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
@@ -443,7 +445,7 @@
 				"update_interval": "1d"
     	},
 			{
-				"tag": "OpenAI域名",
+				"tag": "geosite-OpenAI",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
@@ -451,7 +453,7 @@
 				"update_interval": "1d"
     	},
 			{
-				"tag": "GoogleIP",
+				"tag": "geoip-Google",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
@@ -459,7 +461,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "Google域名",
+				"tag": "geosite-Google",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
@@ -467,7 +469,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "YouTube域名",
+				"tag": "geosite-YouTube",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
@@ -475,7 +477,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "GitHub域名",
+				"tag": "geosite-GitHub",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
@@ -483,7 +485,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "TelegramIP",
+				"tag": "geoip-Telegram",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
@@ -491,7 +493,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "Telegram域名",
+				"tag": "geosite-Telegram",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
@@ -499,7 +501,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "Spotify域名",
+				"tag": "geosite-Spotify",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
@@ -507,7 +509,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "Microsoft域名",
+				"tag": "geosite-Microsoft",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
@@ -515,7 +517,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "国外域名",
+				"tag": "geosite-geolocation-!cn",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
@@ -523,7 +525,7 @@
 				"update_interval": "1d"
       },
 			{
-				"tag": "广告域名",
+				"tag": "geosite-category-ads-all",
 				"type": "remote",
 				"format": "binary",
 				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
