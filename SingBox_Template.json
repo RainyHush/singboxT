@@ -145,7 +145,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "Japan",
@@ -154,7 +154,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "TaiWan",
@@ -163,7 +163,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "Singapore",
@@ -172,7 +172,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "Korea",
@@ -181,7 +181,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "America",
@@ -190,7 +190,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "China",
@@ -199,7 +199,7 @@
 			"url": "http://www.gstatic.com/generate_204",
 			"interval": "60m",
 			"tolerance": 50,
-			"idle_timeout": "60"
+			"idle_timeout": "60m"
     },
 		{
 			"tag": "Others",
