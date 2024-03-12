@@ -143,7 +143,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -151,7 +151,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -159,7 +159,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -167,7 +167,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -175,7 +175,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -183,7 +183,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -191,7 +191,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -199,7 +199,7 @@
 			"type": "urltest",
 			"outbounds": [],
 			"url": "http://www.gstatic.com/generate_204",
-			"interval": "15m",
+			"interval": "60m",
 			"tolerance": 50
     },
 		{
@@ -330,9 +330,17 @@
 				"protocol": "dns",
 				"outbound": "dns-out"
       },
+      {
+      	"protocol": "stun",
+      	"outbound": "block"
+      },
 			{
 				"port": 53,
 				"outbound": "dns-out"
+      },
+      {
+      	"protocol": "quic",
+      	"outbound": "block"
       },
 			{
 				"network": "udp",
