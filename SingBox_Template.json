@@ -26,12 +26,12 @@
 		},
 		"servers": [
 			{
-				"tag": "GoogleDNS",
+				"tag": "remoteDNS",
 				"address": "https://1.1.1.1/dns-query",
 				"detour": "Proxy"
       },
 			{
-				"tag": "localDns",
+				"tag": "localDNS",
 				"address": "https://223.6.6.6/dns-query",
 				"detour": "China"
       },
@@ -59,16 +59,16 @@
       },
 			{
 				"outbound": "any",
-				"server": "GoogleDns",
+				"server": "remoteDNS",
 				"disable_cache": true
       },
 			{
 				"rule_set": "geosite-cn",
-				"server": "localDns"
+				"server": "localDNS"
       },
 			{
 				"clash_mode": "direct",
-				"server": "localDns"
+				"server": "localDNS"
       },
 			{
 				"clash_mode": "global",
@@ -85,10 +85,10 @@
       },
 			{
 				"rule_set": "geosite-geolocation-!cn",
-				"server": "GoogleDNS"
+				"server": "remoteDNS"
       }
     ],
-		"final": "GoogleDNS",
+		"final": "remoteDNS",
 		"strategy": "prefer_ipv4",
 		"reverse_mapping": true,
 		"independent_cache": true
