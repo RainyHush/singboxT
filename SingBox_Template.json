@@ -32,7 +32,7 @@
       },
 			{
 				"tag": "localDNS",
-				"address": "https://223.6.6.6/dns-query",
+				"address": "https://223.5.5.5/dns-query",
 				"detour": "China"
       },
 			{
@@ -75,7 +75,7 @@
 				"server": "fakeip"
       },
 			{
-				"inbound": "tun-in",
+				"inbound": "tun",
 				"query_type": [
           "A",
           "AAAA"
@@ -89,20 +89,18 @@
       }
     ],
 		"final": "remoteDNS",
-		"strategy": "prefer_ipv4",
-		"reverse_mapping": true,
 		"independent_cache": true
+		
 	},
 	"inbounds": [
 		{
-			"tag": "tun-in",
+			"tag": "tun",
 			"type": "tun",
 			"inet4_address": "172.19.0.0/30",
 			"inet6_address": "fdfe:dcba:9876::0/126",
 			"mtu": 9000,
 			"stack": "mixed",
 			"auto_route": true,
-			"strict_route": true,
 			"sniff": true,
 			"platform": {
 				"http_proxy": {
@@ -117,7 +115,6 @@
 			"type": "mixed",
 			"listen": "127.0.0.1",
 			"listen_port": 7890,
-
 			"sniff": true,
 			"domain_strategy": "prefer_ipv4"
     }
