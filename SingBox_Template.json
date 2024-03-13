@@ -14,7 +14,8 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true
+      "store_fakeip": true,
+      "store_rdrc": true
     }
   },
   "dns": {
@@ -94,7 +95,9 @@
     ],
     "final": "Cloudflare",
     "strategy": "prefer_ipv4",
-    "independent_cache": true
+    "disable_cache": false,
+    "disable_expire": false,
+    "independent_cache": false
   },
   "inbounds": [
     {
