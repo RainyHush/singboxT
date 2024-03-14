@@ -26,12 +26,7 @@
     },
     "servers": [
       {
-        "tag": "Cloudflare",
-        "address": "https://1.1.1.1/dns-query",
-        "detour": "Proxy"
-      },
-      {
-        "tag": "spare",
+        "tag": "google-dns",
         "address": "https://8.8.8.8/dns-query",
         "detour": "Proxy"
       },
@@ -64,7 +59,7 @@
       },
       {
         "outbound": "any",
-        "server": "Cloudflare",
+        "server": "google-dns",
         "disable_cache": true
       },
       {
@@ -90,10 +85,10 @@
       },
       {
         "rule_set": "geosite-geolocation-!cn",
-        "server": "Cloudflare"
+        "server": "google-dns"
       }
     ],
-    "final": "Cloudflare",
+    "final": "google-dns",
     "strategy": "prefer_ipv4",
     "disable_cache": false,
     "disable_expire": false,
