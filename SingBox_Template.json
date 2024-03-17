@@ -27,7 +27,7 @@
     "servers": [
       {
         "tag": "google-dns",
-        "address": "https://8.8.8.8/dns-query",
+        "address": "tls://8.8.8.8",
         "detour": "Proxy"
       },
       {
@@ -59,7 +59,7 @@
       },
       {
         "outbound": "any",
-        "server": "google-dns",
+        "server": "local",
         "disable_cache": true
       },
       {
@@ -84,10 +84,19 @@
         "rewrite_ttl": 1
       },
       {
-        "rule_set": "geosite-geolocation-!cn",
-        "server": "google-dns"
+        "type": "logical",
+        "mode": "and",
+        "rules": [
+          {
+            "rule_set": "geosite-geolocation-!cn"
+          },
+          {
+            "rule_set": "geoip-cn"
+          }
+        ],
+        "server": "google-dns",
+        "client_subnet": "114.114.114.114"
       }
-      
     ],
     "final": "google-dns",
     "strategy": "prefer_ipv4",
@@ -138,79 +147,7 @@
       ],
       "default": "Japan"
     },
-    {
-      "tag": "Hong Kong",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "Japan",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "TaiWan",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "Singapore",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "Korea",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "America",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "China",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
-      "tag": "Others",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
-    },
-    {
+        {
       "tag": "OpenAI",
       "type": "selector",
       "outbounds": [
@@ -316,6 +253,78 @@
         "Proxy",
         "Others"
       ]
+    },
+    {
+      "tag": "Hong Kong",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "Japan",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "TaiWan",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "Singapore",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "Korea",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "America",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "China",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
+    },
+    {
+      "tag": "Others",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "60m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
     },
     {
       "type": "direct",
