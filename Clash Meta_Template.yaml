@@ -59,7 +59,7 @@ tun:
   auto-route: true
   auto-detect-interface: true
   strict-route: true
-
+# DNS配置
 dns:
   enable: true
   listen: :1053
@@ -70,13 +70,20 @@ dns:
     - "*"
     - "+.lan"
     - "+.local"
+# 默认DNS
   default-nameserver:
     - 223.5.5.5
-  nameserver:
+    - 8.8.8.8
+# 服务器名称
+  nameserver: 
+    - 8.8.8.8
+    - 1.1.1.1
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-  proxy-server-nameserver:
-    - https://doh.pub/dns-query
+# 代理服务器名称
+#  proxy-server-nameserver:
+#    - https://doh.pub/dns-query
+# 服务器策略
   nameserver-policy:
     "rule-set:cn_domain,private":
       - "https://doh.pub/dns-query#国内"
