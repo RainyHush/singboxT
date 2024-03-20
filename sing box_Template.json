@@ -26,14 +26,33 @@
     },
     "servers": [
       {
-        "tag": "google-dns",
-        "address": "https://8.8.8.8/dns-query",
+        "tag": "Proxy_dns",
+        "address": "h3://8.8.8.8/dns-query",
+        "address_resolver": "dns_resolver",
         "detour": "Proxy"
       },
       {
-        "tag": "local",
-        "address": "https://223.5.5.5/dns-query",
+      	
+        "tag": "Proxy_C_dns",
+        "address": "h3://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "detour": "Proxy"
+      },
+      {
+        "tag": "local_dns",
+        "address": "h3://dns.alidns.com/dns-query",
+        "address_resolver": "local_resolver",
         "detour": "China"
+      },
+      {
+      	"tag": "dns_resolver",
+      	"address": "8.8.8.8",
+      	"detour": "Proxy"
+      },
+      {
+      	"tag": "local_resolver",
+      	"address": "223.5.5.5",
+      	"detour": "China"
       },
       {
         "tag": "fakeip",
@@ -59,16 +78,16 @@
       },
       {
         "outbound": "any",
-        "server": "local",
+        "server": "local_dns",
         "disable_cache": true
       },
       {
         "rule_set": "geosite-cn",
-        "server": "local"
+        "server": "local_dns"
       },
       {
         "clash_mode": "direct",
-        "server": "local"
+        "server": "local_dns"
       },
       {
         "clash_mode": "global",
@@ -85,10 +104,10 @@
       },
       {
         "rule_set": "geosite-geolocation-!cn",
-        "server": "google-dns"
+        "server": "Proxy_dns"
       }
     ],
-    "final": "google-dns",
+    "final": "Proxy_dns",
     "strategy": "prefer_ipv4",
     "disable_cache": false,
     "disable_expire": false,
@@ -101,7 +120,7 @@
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",
       "mtu": 9000,
-      "stack": "system",
+      "stack": "mixed",
       "auto_route": true,
       "strict_route": true,
       "sniff": true,
