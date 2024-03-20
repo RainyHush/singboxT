@@ -1,0 +1,176 @@
+######### 锚点 start #######
+# 策略组相关
+pr: &pr {type: select, proxies: [ 日本, 香港, 台湾, 狮城, 韩国, 美国, 国内, Proxy, 其它]}
+
+#这里是订阅更新和延迟测试相关的
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
+u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 3600, tolerance: 50}}
+
+######### 锚点 end #######
+
+# url 里填写自己的订阅,名称不能重复
+proxy-providers:
+  provider1:
+    <<: *p
+    url: "https://rainyhush-box.hf.space/RainyHushBoxSub/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
+
+ipv6: true
+log-level: info
+allow-lan: true
+mixed-port: 7890
+unified-delay: true
+tcp-concurrent: true
+keep-alive-interval: 1800
+external-controller: 127.0.0.1:9090
+external-ui: ui
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+find-process-mode: strict
+global-client-fingerprint: chrome
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  skip-domain:
+    - "Mijia Cloud"
+ntp:
+  enable: true
+  write-to-system: false
+  server: time.apple.com
+  port: 123
+  interval: 60
+
+tun:
+  enable: true  # enable 'true'
+  stack: system  # or 'gvisor'
+  mtu: 9000
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-detect-interface: true
+  strict-route: true
+
+dns:
+  enable: true
+  listen: :1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+  default-nameserver:
+    - 223.5.5.5
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    "rule-set:cn_domain,private":
+      - "https://doh.pub/dns-query#国内"
+      - "https://dns.alidns.com/dns-query#国内"
+    "rule-set:geolocation-!cn":
+      - "https://dns.cloudflare.com/dns-query#Proxy"
+      - "https://dns.google/dns-query#Proxy"
+proxies:
+proxy-groups:
+  - {name: Proxy, type: select, proxies: [香港, 台湾, 日本, 狮城, 韩国, 美国, 国内, 其它]}
+  - {name: GitHub, <<: *pr}
+  - {name: Microsoft, <<: *pr}
+  - {name: OpenAI, <<: *pr}
+  - {name: YouTube, <<: *pr}
+  - {name: Google, <<: *pr}
+  - {name: Telegram, <<: *pr}
+  - {name: Spotify, <<: *pr}
+  - {name: AdBlock, type: select, proxies: [REJECT, Proxy]}
+  #分隔,下面是地区分组
+  - {name: 国内, <<: *u, include-all-providers: true, filter: "(?i)济南|杭州|鞍山|广州|徐州|浙江"}
+  - {name: 香港, <<: *u, include-all-providers: true, filter: "(?i)港|hk|Hong Kong|hong kong"}
+  - {name: 台湾, <<: *u, include-all-providers: true, filter: "(?i)台|tw|TaiWan"}
+  - {name: 日本, <<: *u, include-all-providers: true, filter: "(?i)日|jp|Japan"}
+  - {name: 狮城, <<: *u, include-all-providers: true, filter: "(?i)(新|sg|Singapore)"}
+  - {name: 韩国, <<: *u, include-all-providers: true, filter: "(?i)(韩|kr|Korea)"}
+  - {name: 美国, <<: *u, include-all-providers: true, filter: "(?i)美|us|America|united states"}
+  - {name: 其它, <<: *u, include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇹🇼|🇰🇷|🇸🇬|🇨🇳|港|hk|Hong Kong|台|tw|TaiWan|日|jp|Japan|新|sg|Singapore|韩|kr|Korea|美|America|us|unitedstates|济南|杭州|鞍山|广州|徐州|浙江)).*"}
+rules:
+  - RULE-SET, category-ads-all_domain, AdBlock
+  - RULE-SET, private, 国内
+  - RULE-SET, cn_domain, 国内
+  - RULE-SET, github_domain, GitHub
+  - RULE-SET, microsoft_domain, Microsoft
+  - RULE-SET, openai_domain, OpenAI
+  - RULE-SET, youtube_domain, YouTube
+  - RULE-SET, google_domain, Google
+  - RULE-SET, telegram_domain, Telegram
+  - RULE-SET, spotify_domain, Spotify
+  - RULE-SET, geolocation-!cn, Proxy
+  
+  - RULE-SET,google_ip,Google
+  - RULE-SET,telegram_ip,Telegram
+  - RULE-SET,cn_ip,国内
+  - GEOSITE,CN,国内,no-resolve
+  - GEOIP,CN,国内,no-resolve
+  - MATCH,Proxy
+
+rule-anchor:
+  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
+  domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
+rule-providers:
+#  域名
+  category-ads-all_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.yaml"
+  private:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
+  cn_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
+  github_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
+  microsoft_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.yaml"
+  openai_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.yaml"
+  youtube_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"
+  google_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
+  telegram_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"
+  spotify_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml"
+  geolocation-!cn:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
+# IP
+  cn_ip:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
+  google_ip:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"
+  telegram_ip:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
