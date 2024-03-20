@@ -52,6 +52,7 @@ ntp:
 tun:
   enable: true  # enable 'true'
   stack: system  # or 'gvisor'
+  device: Meta
   mtu: 9000
   dns-hijack:
     - "any:53"
@@ -76,6 +77,8 @@ dns:
     - 8.8.8.8
 # 服务器名称
   nameserver: 
+    - 8.8.8.8
+    - 223.5.5.5
     - https://dns.cloudflare.com/dns-query
     - https://dns.google/dns-query
     - https://dns.alidns.com/dns-query
@@ -83,11 +86,11 @@ dns:
 # 服务器策略
   nameserver-policy:
     "rule-set:cn_domain,private":
-      - "https://doh.pub/dns-query#国内"
-      - "https://dns.alidns.com/dns-query#国内"
+      - "https://doh.pub/dns-query"
+      - "https://dns.alidns.com/dns-query"
     "rule-set:geolocation-!cn":
-      - "https://dns.cloudflare.com/dns-query#Proxy"
-      - "https://dns.google/dns-query#Proxy"
+      - "https://dns.cloudflare.com/dns-query"
+      - "https://dns.google/dns-query"
 proxies:
 proxy-groups:
   - {name: Proxy, type: select, proxies: [香港, 台湾, 日本, 狮城, 韩国, 美国, 国内, 其它]}

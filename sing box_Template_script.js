@@ -11,7 +11,7 @@ config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
   if (['Others'].includes(i.tag)) {
-  i.outbounds.push(...proxies.filter(p => !/港|香港|hk|Hong Kong|HK|🇨🇳|济南|杭州|鞍山|广州|徐州|浙江|🇯🇵|日本|東京|jp|Japan|🇭🇰|台|台灣|tw|taiwan|🇹🇼|新|sg|singapore|🇸🇬|美|us|America|Oregon|unitedstates|united states|united states|🇺🇸|韩|kr|서울|Korea|🇰🇷/i.test(p.tag)).map(p => p.tag))
+  i.outbounds.push(...proxies.filter(p => !/港|香港|hk|Hong Kong|HK|🇨🇳|济南|杭州|鞍山|广州|徐州|浙江|🇩🇪|Germany|德国|🇯🇵|日本|東京|jp|Japan|🇭🇰|台|台灣|tw|taiwan|🇹🇼|新|sg|singapore|🇸🇬|美|us|America|Oregon|unitedstates|united states|united states|🇺🇸|韩|kr|서울|Korea|🇰🇷/i.test(p.tag)).map(p => p.tag))
   }
   if (['Hong Kong'].includes(i.tag)) {
     i.outbounds.push(...proxies.filter(p => /港|香港|hk|Hong Kong|HK|🇭🇰/i.test(p.tag)).map(p => p.tag))
@@ -33,6 +33,9 @@ config.outbounds.map(i => {
   }
   if (['Korea'].includes(i.tag)) {
     i.outbounds.push(...proxies.filter(p => /韩|kr|서울|Korea|🇰🇷/i.test(p.tag)).map(p => p.tag))
+  }
+  if (['Germany'].includes(i.tag)) {
+    i.outbounds.push(...proxies.filter(p => /德|de|DE|Germany|🇩🇪/i.test(p.tag)).map(p => p.tag))
   }
 })
 
