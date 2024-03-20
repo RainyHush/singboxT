@@ -1,14 +1,12 @@
-######### 锚点 start #######
+
 # 策略组相关
 pr: &pr {type: select, proxies: [ 日本, 香港, 台湾, 狮城, 韩国, 美国, 国内, Proxy, 其它]}
-
-#这里是订阅更新和延迟测试相关的
+#订阅更新和延迟测试
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
 u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 3600, tolerance: 50}}
 
-######### 锚点 end #######
 
-# url 里填写自己的订阅,名称不能重复
+# 订阅url
 proxy-providers:
   provider1:
     <<: *p
@@ -97,7 +95,7 @@ proxy-groups:
   - {name: Telegram, <<: *pr}
   - {name: Spotify, <<: *pr}
   - {name: AdBlock, type: select, proxies: [REJECT, Proxy]}
-  #分隔,下面是地区分组
+# 地区分组
   - {name: 国内, <<: *u, include-all-providers: true, filter: "(?i)济南|杭州|鞍山|广州|徐州|浙江"}
   - {name: 香港, <<: *u, include-all-providers: true, filter: "(?i)港|hk|Hong Kong|hong kong"}
   - {name: 台湾, <<: *u, include-all-providers: true, filter: "(?i)台|tw|TaiWan"}
@@ -130,7 +128,7 @@ rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
 rule-providers:
-#  域名
+# 域名
   category-ads-all_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.yaml"
