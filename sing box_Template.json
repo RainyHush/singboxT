@@ -1,6 +1,6 @@
 {
   "log": {
-    "level": "inf",
+    "level": "info",
     "timestamp": true
     
   },
