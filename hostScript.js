@@ -21,6 +21,9 @@ function operator(proxies = []) {
 		let network = _.get(p, 'network')
 		const type = _.get(p, 'type')
 		const isReality = _.get(p, 'reality-opts')
+                if (packet_encoding === 'none' ) {
+				 _.set(p, 'xudp', true)
+			}
 
 		/* 只修改 vmess 和 vless */
 		if (_.includes(['vmess', 'vless'], type)) {
@@ -58,10 +61,7 @@ function operator(proxies = []) {
 					}
 				}
 			}
-			if (packet_encoding === 'none' ) {
-				 _.set(p, 'xudp', true)
-			}
-
+			
 			if (network === 'http') {
 				if (!_.get(p, 'http-opts.method') && !method) {
 					method = defaultMethod
