@@ -152,10 +152,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "Japan"
@@ -171,10 +168,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "America"
@@ -190,10 +184,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "Singapore"
@@ -209,10 +200,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "Singapore"
@@ -228,10 +216,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "Japan"
@@ -247,10 +232,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "Japan"
@@ -266,10 +248,7 @@
         "Korea",
         "America",
         "Germany",
-        "Great Britain",
-        "Argentina",
         "China",
-        "Others",
         "block"
       ],
       "default": "America"
@@ -358,24 +337,6 @@
     },
     {
     	"tag": "Germany",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "60m",
-    	"tolerance": 50,
-    	"idle_timeout": "60m"
-    },
-    {
-    	"tag": "Great Britain",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "60m",
-    	"tolerance": 50,
-    	"idle_timeout": "60m"
-    },
-    {
-    	"tag": "Argentina",
     	"type": "urltest",
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
