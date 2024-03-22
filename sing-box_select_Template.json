@@ -280,47 +280,47 @@
     },
     {
       "tag": "Hong Kong",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
       "tag": "Japan",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
       "tag": "TaiWan",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
       "tag": "Singapore",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
       "tag": "Korea",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
       "tag": "America",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
     	"tag": "Germany",
-    	"type": "urltest",
+    	"type": "selector",
     	"outbounds": []
     },
     {
       "tag": "China",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
       "tag": "Others",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": []
     },
     {
