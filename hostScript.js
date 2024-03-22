@@ -58,7 +58,7 @@ function operator(proxies = []) {
 					}
 				}
 			}
-			if (packet_encoding === none ) {
+			if (packet_encoding === 'none' ) {
 				 _.set(p, 'xudp', true)
 			}
 
