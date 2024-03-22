@@ -1,0 +1,1 @@
+{ "data": { "type": "Regex Rename Operator", "args": [{ "expr": "香港", "now": "Hong Kong" }, { "expr": "日本", "now": "Japan" }, { "expr": "台湾", "now": "TaiWan" }, { "expr": "新加坡", "now": "Singapore" }, { "expr": "美国", "now": "America" }, { "expr": "韩国", "now": "Korea" }, { "expr": "德国", "now": "Germany" }], "id": "97980456.3976746" } }

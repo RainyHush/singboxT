@@ -139,6 +139,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "Japan"
@@ -155,6 +156,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "America"
@@ -171,6 +173,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "Singapore"
@@ -187,6 +190,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "Singapore"
@@ -203,6 +207,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "Japan"
@@ -219,6 +224,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "Japan"
@@ -235,6 +241,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "America"
@@ -251,6 +258,7 @@
         "America",
         "Germany",
         "China",
+        "Others",
         "block"
       ],
       "default": "Japan"
