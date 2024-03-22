@@ -58,10 +58,8 @@ function operator(proxies = []) {
 					}
 				}
 			}
-			if (packet_encoding) {
-				_.set(p, 'packet_encoding', packet_encoding);
-			} else if (_.get($arguments, 'packet_encoding')) {
-				_.set(p, 'packet_encoding', _.get($arguments, 'packet_encoding'));
+			if (!packet_encoding) {
+				 _.set(p, 'xudp', true)
 			}
 
 			if (network === 'http') {
