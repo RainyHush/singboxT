@@ -2,7 +2,7 @@ function operator(proxies = []) {
   return proxies.map((p = {}) => {
     const _ = lodash
 
-    const name = _.get(p, 'name') || ''
+    const packet_encoding = _.get($arguments, 'packet_encoding')
     const host = _.get($arguments, 'host')
     const hostPrefix = _.get($arguments, 'hostPrefix')
     const hostSuffix = _.get($arguments, 'hostSuffix')
@@ -58,9 +58,11 @@ function operator(proxies = []) {
           }
         }
       }
-      
-    _.set(p, 'xudp', true)
-      
+      if (packet_encoding){
+          _.set(p, 'packet_encoding', packet_encoding)
+      } else {
+          _.set(p, 'packet_encoding', packet_encoding)
+      }
       if (network === 'http') {
         if (!_.get(p, 'http-opts.method') && !method) {
           method = defaultMethod
