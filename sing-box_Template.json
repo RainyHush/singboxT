@@ -260,8 +260,7 @@
       "type": "selector",
       "outbounds": [
         "block",
-        "Proxy",
-        "Others"
+        "Proxy"
       ]
     },
     {
