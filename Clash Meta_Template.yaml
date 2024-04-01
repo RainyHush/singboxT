@@ -3,7 +3,7 @@
 pr: &pr {type: select, proxies: [ 日本, 香港, 台湾, 狮城, 韩国, 美国, 国内, Proxy, 其它]}
 #订阅更新和延迟测试
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
-u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 3600, tolerance: 50}}
+u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, tolerance: 50}}
 
 
 # 订阅url
