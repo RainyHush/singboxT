@@ -263,81 +263,72 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "tag": "Japan",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "tag": "TaiWan",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "tag": "Singapore",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "tag": "Korea",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "tag": "America",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
     	"tag": "Germany",
     	"type": "urltest",
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "60m",
-    	"tolerance": 50,
-    	"idle_timeout": "60m"
+    	"interval": "15m",
+    	"tolerance": 50
     },
     {
       "tag": "China",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "tag": "Others",
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "60m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "interval": "15m",
+      "tolerance": 50
     },
     {
       "type": "direct",
