@@ -317,8 +317,8 @@
     {
       "tag": "China",
       "type": "selector",
-      "outbounds": [],
-      "default": "济南联通 1"
+      "outbounds": []
+      
     },
     {
       "tag": "Others",
