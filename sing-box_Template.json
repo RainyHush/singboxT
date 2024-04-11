@@ -316,11 +316,9 @@
     },
     {
       "tag": "China",
-      "type": "urltest",
+      "type": "selector",
       "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
-      "tolerance": 50
+      "default": "济南联通 1"
     },
     {
       "tag": "Others",
