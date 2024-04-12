@@ -263,7 +263,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
@@ -271,7 +271,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
@@ -279,7 +279,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
@@ -287,7 +287,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
@@ -295,7 +295,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
@@ -303,7 +303,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
@@ -311,7 +311,7 @@
     	"type": "urltest",
     	"outbounds": [],
     	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "15m",
+    	"interval": "30m",
     	"tolerance": 50
     },
     {
@@ -325,7 +325,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "http://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 50
     },
     {
