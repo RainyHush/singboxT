@@ -139,180 +139,39 @@
       "default": "Japan"
     },
     {
-      "tag": "OpenAI",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "America"
-    },
-    {
-      "tag": "Google",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "Singapore"
-    },
-    {
-      "tag": "YouTube",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "Singapore"
-    },
-    {
-      "tag": "GitHub",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "Japan"
-    },
-    {
-      "tag": "Telegram",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "Japan"
-    },
-    {
-      "tag": "Spotify",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "America"
-    },
-    {
-      "tag": "Microsoft",
-      "type": "selector",
-      "outbounds": [
-        "Hong Kong",
-        "Japan",
-        "TaiWan",
-        "Singapore",
-        "Korea",
-        "America",
-        "Germany",
-        "China",
-        "block"
-      ],
-      "default": "Japan"
-    },
-    {
-      "tag": "AdBlock",
-      "type": "selector",
-      "outbounds": [
-        "block",
-        "Proxy"
-      ]
-    },
-    {
       "tag": "Hong Kong",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "Japan",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "TaiWan",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "Singapore",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "Korea",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "America",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
     },
     {
     	"tag": "Germany",
-    	"type": "urltest",
-    	"outbounds": [],
-    	"url": "http://www.gstatic.com/generate_204",
-    	"interval": "30m",
-    	"tolerance": 50
+    	"type": "selector",
+    	"outbounds": []
     },
     {
       "tag": "China",
@@ -322,11 +181,16 @@
     },
     {
       "tag": "Others",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "http://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50
+      "type": "selector",
+      "outbounds": []
+    },
+    {
+      "tag": "AdBlock",
+      "type": "selector",
+      "outbounds": [
+        "block",
+        "Proxy"
+      ]
     },
     {
       "type": "direct",
@@ -340,6 +204,7 @@
       "type": "block",
       "tag": "block"
     }
+
   ],
   "route": {
     "auto_detect_interface": true,
@@ -396,42 +261,6 @@
         "outbound": "China"
       },
       {
-        "rule_set": "geosite-OpenAI",
-        "outbound": "OpenAI"
-      },
-      {
-        "rule_set": "geoip-Google",
-        "outbound": "Google"
-      },
-      {
-        "rule_set": "geosite-Google",
-        "outbound": "Google"
-      },
-      {
-        "rule_set": "geosite-YouTube",
-        "outbound": "YouTube"
-      },
-      {
-        "rule_set": "geosite-GitHub",
-        "outbound": "GitHub"
-      },
-      {
-        "rule_set": "geoip-Telegram",
-        "outbound": "Telegram"
-      },
-      {
-        "rule_set": "geosite-Telegram",
-        "outbound": "Telegram"
-      },
-      {
-        "rule_set": "geosite-Spotify",
-        "outbound": "Spotify"
-      },
-      {
-        "rule_set": "geosite-Microsoft",
-        "outbound": "Microsoft"
-      },
-      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Proxy"
       }
@@ -459,78 +288,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-OpenAI",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geoip-Google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-Google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-YouTube",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-GitHub",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geoip-Telegram",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-Telegram",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-Spotify",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-Microsoft",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
