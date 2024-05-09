@@ -74,10 +74,10 @@ dns:
 # 默认DNS
   default-nameserver:
     - 223.5.5.5
-    - 8.8.8.8
+    - 1.1.1.1
 # 服务器名称
   nameserver: 
-    - 8.8.8.8
+    - 1.1.1.1
     - 223.5.5.5
     - https://dns.cloudflare.com/dns-query
     - https://dns.google/dns-query
@@ -103,14 +103,14 @@ proxy-groups:
   - {name: Spotify, <<: *pr}
   - {name: AdBlock, type: select, proxies: [REJECT, Proxy]}
 # 地区分组
-  - {name: 国内, <<: *u, include-all-providers: true, filter: "(?i)济南|杭州|鞍山|广州|徐州|浙江"}
+  - {name: 国内, <<: *u, include-all-providers: true, filter: "(?i)济南|杭州|武汉|鞍山|广州|徐州|浙江"}
   - {name: 香港, <<: *u, include-all-providers: true, filter: "(?i)港|hk|Hong Kong|hong kong"}
   - {name: 台湾, <<: *u, include-all-providers: true, filter: "(?i)台|tw|TaiWan"}
   - {name: 日本, <<: *u, include-all-providers: true, filter: "(?i)日|jp|Japan"}
   - {name: 狮城, <<: *u, include-all-providers: true, filter: "(?i)(新|sg|Singapore)"}
   - {name: 韩国, <<: *u, include-all-providers: true, filter: "(?i)(韩|kr|Korea)"}
   - {name: 美国, <<: *u, include-all-providers: true, filter: "(?i)美|us|America|united states"}
-  - {name: 其它, <<: *u, include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇹🇼|🇰🇷|🇸🇬|🇨🇳|港|hk|Hong Kong|台|tw|TaiWan|日|jp|Japan|新|sg|Singapore|韩|kr|Korea|美|America|us|unitedstates|济南|杭州|鞍山|广州|徐州|浙江)).*"}
+  - {name: 其它, <<: *u, include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇹🇼|🇰🇷|🇸🇬|🇨🇳|港|hk|Hong Kong|台|tw|TaiWan|日|jp|Japan|新|sg|Singapore|韩|kr|Korea|美|America|us|unitedstates|武汉|济南|杭州|鞍山|广州|徐州|浙江)).*"}
 rules:
   - RULE-SET, category-ads-all_domain, AdBlock
   - RULE-SET, private, 国内
