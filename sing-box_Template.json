@@ -130,53 +130,63 @@
         "China",
         "block"
       ],
-      "default": "Japan"
+      "default": "Japan",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Hong Kong",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Japan",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "TaiWan",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Singapore",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Korea",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "America",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
     	"tag": "Germany",
     	"type": "selector",
-    	"outbounds": []
+    	"outbounds": [],
+    	"interrupt_exist_connections": true
     },
     {
       "tag": "China",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
       
     },
     {
       "tag": "Others",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "AdBlock",
@@ -184,7 +194,8 @@
       "outbounds": [
         "block",
         "Proxy"
-      ]
+      ],
+      "interrupt_exist_connections": true
     },
     {
       "type": "dns",
