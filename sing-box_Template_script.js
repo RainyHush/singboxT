@@ -22,7 +22,7 @@ config.outbounds.map(i => {
 			.map(p => p.tag))
 	}
 	if (['Hong Kong'].includes(i.tag)) {
-		i.outbounds.push(...proxies.filter(p => /香港|hk|HK|Hong Kong|🇭🇰/i.test(p.tag))
+		i.outbounds.push(...proxies.filter(p => /香港|hk|HK|Hong Kong/i.test(p.tag))
 			.map(p => p.tag))
 	}
 	if (['China'].includes(i.tag)) {
