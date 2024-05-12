@@ -237,7 +237,7 @@
       },
       {
         "rule_set": "geosite-category-ads-all",
-        "outbound": "AdBlock"
+        "outbound": "广告"
       },
       {
         "rule_set": "geosite-private",
