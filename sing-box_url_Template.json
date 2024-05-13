@@ -134,7 +134,7 @@
     },
     {
       "tag": "香港",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -144,7 +144,7 @@
     },
     {
       "tag": "日本",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -154,7 +154,7 @@
     },
     {
       "tag": "台湾",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -164,7 +164,7 @@
     },
     {
       "tag": "新加坡",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -174,7 +174,7 @@
     },
     {
       "tag": "韩国",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -184,7 +184,7 @@
     },
     {
       "tag": "美国",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -194,7 +194,7 @@
     },
     {
     	"tag": "德国",
-    	"type": "selector",
+    	"type": "urltest",
     	"outbounds": [],
     	"url": "https://www.gstatic.com/generate_204",
     	"interval": "30m",
@@ -204,7 +204,7 @@
     },
     {
       "tag": "中国",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
@@ -215,7 +215,7 @@
     },
     {
       "tag": "其他",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
       "interval": "60m",
