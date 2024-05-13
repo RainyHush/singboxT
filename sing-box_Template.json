@@ -135,7 +135,7 @@
     {
       "tag": "微软",
       "type": "selector",
-      "outbound": [
+      "outbounds": [
         "香港",
         "日本",
         "新加坡",
