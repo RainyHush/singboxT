@@ -192,15 +192,6 @@
       "interrupt_exist_connections": true
     },
     {
-      "tag": "Auto",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 100,
-      "idle_timeout": "60m"
-    },
-    {
       "tag": "广告",
       "type": "selector",
       "outbounds": [
