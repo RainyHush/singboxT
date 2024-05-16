@@ -104,7 +104,7 @@
       "sniff": true,
       "platform": {
         "http_proxy": {
-          "enabled": false,
+          "enabled": true,
           "server": "127.0.0.1",
           "server_port": 7890
         }
@@ -204,7 +204,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 100,
       "idle_timeout": "60m"
     },
