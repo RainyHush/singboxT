@@ -53,7 +53,7 @@
       },
       {
         "outbound": "any",
-        "server": "local_dns",
+        "server": "Proxy_dns",
         "disable_cache": false
       },
       {
@@ -77,7 +77,7 @@
           "A",
           "AAAA"
         ],
-        "server": "Proxy_dns",
+        "server": "fakeip",
         "rewrite_ttl": 1
       },
       {
