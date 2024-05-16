@@ -125,12 +125,13 @@
       "outbounds": [
         "香港",
         "日本",
-        "新加坡",
+        "狮城",
         "台湾",
         "韩国",
         "美国",
         "德国",
-        "中国"
+        "中国",
+        "其他"
       ],
       "default": "日本",
       "interrupt_exist_connections": true
@@ -154,7 +155,7 @@
       "interrupt_exist_connections": true
     },
     {
-      "tag": "新加坡",
+      "tag": "狮城",
       "type": "selector",
       "outbounds": [],
       "interrupt_exist_connections": true

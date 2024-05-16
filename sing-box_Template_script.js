@@ -37,7 +37,7 @@ config.outbounds.map(i => {
 		i.outbounds.push(...proxies.filter(p => /日本|jp|JP|Japan/i.test(p.tag))
 			.map(p => p.tag))
 	}
-	if (['新加坡'].includes(i.tag)) {
+	if (['狮城'].includes(i.tag)) {
 		i.outbounds.push(...proxies.filter(p => /新加坡|狮城|sg|SG|Singapore/i.test(p.tag))
 			.map(p => p.tag))
 	}
