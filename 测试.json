@@ -178,11 +178,7 @@
     {
       "tag": "其他",
       "type": "selector",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50,
-      "idle_timeout": "60m"
+      "outbounds": []
     },
     {
       "tag": "Auto",
