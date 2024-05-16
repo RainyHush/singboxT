@@ -161,6 +161,12 @@
       "interrupt_exist_connections": true
     },
     {
+      "tag": "中国",
+      "type": "selector",
+      "outbounds": [],
+      "interrupt_exist_connections": true
+    },
+    {
       "tag": "韩国",
       "type": "selector",
       "outbounds": [],
@@ -179,13 +185,6 @@
     	"interrupt_exist_connections": true
     },
     {
-      "tag": "中国",
-      "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
-      
-    },
-    {
       "tag": "其他",
       "type": "selector",
       "outbounds": [],
@@ -199,6 +198,15 @@
         "全局"
       ],
       "interrupt_exist_connections": true
+    },
+    {
+      "tag": "Auto",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "15m",
+      "tolerance": 100,
+      "idle_timeout": "60m"
     },
     {
       "type": "dns",
