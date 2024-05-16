@@ -133,40 +133,6 @@
       "interrupt_exist_connections": true
     },
     {
-      "tag": "微软",
-      "type": "selector",
-      "outbounds": [
-        "香港",
-        "日本",
-        "新加坡",
-        "台湾",
-        "韩国",
-        "美国",
-        "德国",
-        "中国",
-        "block"
-        ],
-        "default": "香港",
-        "interrupt_exist_connections": true
-    },
-    {
-      "tag": "谷歌",
-      "type": "selector",
-      "outbounds": [
-        "香港",
-        "日本",
-        "新加坡",
-        "台湾",
-        "韩国",
-        "美国",
-        "德国",
-        "中国",
-        "block"
-        ],
-        "default": "新加坡",
-        "interrupt_exist_connections": true
-    },
-    {
       "tag": "香港",
       "type": "selector",
       "outbounds": [],
@@ -290,14 +256,6 @@
         "outbound": "中国"
       },
       {
-        "rule_set": "geosite-microsoft",
-        "outbound": "微软"
-      },
-      {
-        "rule_set": "geosite-google",
-        "outbound": "谷歌"
-      },
-      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "全局"
       }
@@ -325,22 +283,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "全局",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-microsoft",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
-        "download_detour": "全局",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "全局",
         "update_interval": "1d"
       },
