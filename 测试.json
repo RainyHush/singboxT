@@ -133,66 +133,59 @@
         "中国",
         "其他"
       ],
-      "default": "日本",
-      "interrupt_exist_connections": true
+      "default": "日本"
     },
     {
       "tag": "香港",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
+      "outbounds": []
     },
     {
       "tag": "日本",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
+      "outbounds": []
     },
     {
       "tag": "台湾",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
+      "outbounds": []
     },
     {
       "tag": "狮城",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
+      "outbounds": []
     },
     {
       "tag": "韩国",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
+      "outbounds": []
     },
     {
       "tag": "美国",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
+      "outbounds": []
     },
     {
     	"tag": "德国",
     	"type": "selector",
-    	"outbounds": [],
-    	"interrupt_exist_connections": true
+    	"outbounds": []
     },
     {
       "tag": "中国",
       "type": "selector",
-      "outbounds": [],
-      "interrupt_exist_connections": true
-      
+      "outbounds": []
     },
     {
       "tag": "其他",
       "type": "selector",
       "outbounds": [],
-      "interrupt_exist_connections": true
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30m",
+      "tolerance": 50,
+      "idle_timeout": "60m"
     },
     {
-      "tag": "测试延迟",
+      "tag": "Auto",
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
@@ -206,8 +199,7 @@
       "outbounds": [
         "block",
         "全局"
-      ],
-      "interrupt_exist_connections": true
+      ]
     },
     {
       "type": "dns",

@@ -17,7 +17,7 @@ let proxies = await produceArtifact({
 config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
-	if (['测试延迟'].includes(i.tag)) {
+	if (['Auto'].includes(i.tag)) {
 	  i.outbounds.push(...proxies.filter(p => /香港|日本|台湾|新加坡|韩国|美国|浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南/i.test(p.tag))
 	    .map(p => p.tag))
 	}
