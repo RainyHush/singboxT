@@ -35,7 +35,7 @@
         "tag": "local_dns",
         "address": "https://223.5.5.5/dns-query",
         "address_strategy": "prefer_ipv4",
-        "detour": "direct"
+        "detour": "中国"
       },
       {
         "tag": "fakeip",
@@ -54,10 +54,13 @@
       {
         "outbound": "any",
         "server": "local_dns",
-        "disable_cache": true
+        "disable_cache": false
       },
       {
-        "rule_set": "geosite-cn",
+        "rule_set": [
+        "geosite-cn",
+        "geoip-cn"
+        ],
         "server": "local_dns"
       },
       {
@@ -199,10 +202,6 @@
     {
       "type": "dns",
       "tag": "dns-out"
-    },
-    {
-      "type": "direct",
-      "tag": "direct"
     },
     {
       "type": "block",
