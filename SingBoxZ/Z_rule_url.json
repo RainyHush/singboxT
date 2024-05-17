@@ -76,12 +76,6 @@
     "disable_expire": false,
     "independent_cache": false
   },
-  "ntp": {
-    "enabled": true,
-    "server": "time.apple.com",
-    "server_port": 123,
-    "interval": "30m"
-  },
   "inbounds": [
     {
       "tag": "tun",
