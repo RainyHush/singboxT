@@ -104,18 +104,18 @@ dns:
       - "https://1.1.1.1/dns-query"
 proxies:
 proxy-groups:
-  - {name: Proxy, type: select, proxies: [香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它, 广告]}
-  - {name: 广告, type: select, proxies: [REJECT, Proxy]}
+  - {name: Proxy, type: select, proxies: [香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它]}
 # 地区分组
-  - {name: 国内, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
   - {name: 香港, type: select, include-all-providers: true, filter: "(?i)香港|HK|Hong Kong"}
-  - {name: 台湾, type: select, include-all-providers: true, filter: "(?i)台湾|TW|TaiWan"}
   - {name: 日本, type: select, include-all-providers: true, filter: "(?i)日本|JP|Japan"}
   - {name: 狮城, type: select, include-all-providers: true, filter: "(?i)新加坡|SG|Singapore"}
+  - {name: 台湾, type: select, include-all-providers: true, filter: "(?i)台湾|TW|TaiWan"}
   - {name: 韩国, type: select, include-all-providers: true, filter: "(?i)韩国|KR|Korea"}
   - {name: 美国, type: select, include-all-providers: true, filter: "(?i)美国|US|America"}
   - {name: 德国, type: select, include-all-providers: true, filter: "(?i)德国|DE|Germany"}
+  - {name: 国内, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
   - {name: 其它, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|韩国|KR|Korea|美国|US|America|德国|DE|Germany)).*"}
+  - {name: 广告, type: select, proxies: [REJECT]}
 rules:
   - RULE-SET, category-ads-all_domain, 广告
   - RULE-SET, private, 国内
