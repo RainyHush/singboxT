@@ -171,6 +171,21 @@
       "interrupt_exist_connections": true
     },
     {
+      "tag": "Spotify",
+      "type": "selector",
+      "outbounds": [
+        "香港",
+        "日本",
+        "狮城",
+        "台湾",
+        "韩国",
+        "中国",
+        "其他"
+      ],
+      "default": "狮城",
+      "interrupt_exist_connections": true
+    },
+    {
       "tag": "中国",
       "type": "selector",
       "outbounds": [],
@@ -281,7 +296,11 @@
         "outbound": "广告"
       },
       {
-        "rule_set": "geosite-private",
+        "rule_set": [
+          "geosite-private",
+          "geoip-cn",
+          "geosite-cn"
+          ],
         "outbound": "中国"
       },
       {
@@ -289,15 +308,11 @@
         "outbound": "中国"
       },
       {
-        "rule_set": "geoip-cn",
-        "outbound": "中国"
-      },
-      {
-        "rule_set": "geosite-cn",
-        "outbound": "中国"
-      },
-      {
         "rule_set": "geosite-google",
+        "outbound": "Google"
+      },
+      {
+        "rule_set": "geoip-google",
         "outbound": "Google"
       },
       {
@@ -307,6 +322,10 @@
       {
         "rule_set": "geosite-microsoft",
         "outbound": "Microsoft"
+      },
+      {
+        "rule_set": "geosite-Spotify",
+        "outbound": "Spotify"
       },
       {
         "rule_set": "geosite-geolocation-!cn",
@@ -348,6 +367,14 @@
         "update_interval": "1d"
       },
       {
+        "tag": "geoip-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
+        "download_detour": "全局",
+        "update_interval": "1d"
+      },
+      {
         "tag": "geosite-github",
         "type": "remote",
         "format": "binary",
@@ -360,6 +387,14 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+        "download_detour": "全局",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
         "download_detour": "全局",
         "update_interval": "1d"
       },
