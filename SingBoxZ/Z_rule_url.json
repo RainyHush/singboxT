@@ -139,6 +139,20 @@
       "interrupt_exist_connections": true
     },
     {
+      "tag": "GitHub",
+      "type": "selector",
+      "outbounds": [
+        "香港",
+        "日本",
+        "狮城",
+        "台湾",
+        "韩国",
+        "中国",
+        "其他"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
       "tag": "中国",
       "type": "selector",
       "outbounds": [],
@@ -269,6 +283,10 @@
         "outbound": "Google"
       },
       {
+        "rule_set": "geosite-github",
+        "outbound": "GitHub"
+      },
+      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "全局"
       }
@@ -304,6 +322,14 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+        "download_detour": "全局",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-github",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
         "download_detour": "全局",
         "update_interval": "1d"
       },
