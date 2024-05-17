@@ -117,31 +117,11 @@
         "香港",
         "日本",
         "狮城",
-        "台湾",
         "韩国",
-        "中国",
-        "其他"
+        "美国",
+        "德国",
+        "英国"
       ],
-      "interrupt_exist_connections": true
-    },
-    {
-      "tag": "Google",
-      "type": "selector",
-      "outbounds": [
-        "香港",
-        "日本",
-        "狮城",
-        "台湾",
-        "韩国",
-        "中国",
-        "其他"
-      ],
-      "interrupt_exist_connections": true
-    },
-    {
-      "tag": "中国",
-      "type": "selector",
-      "outbounds": [],
       "interrupt_exist_connections": true
     },
     {
@@ -156,16 +136,6 @@
     },
     {
       "tag": "日本",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 100,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
-    },
-    {
-      "tag": "台湾",
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
@@ -194,10 +164,34 @@
       "idle_timeout": "60m",
       "interrupt_exist_connections": true
     },
-    {
-      "tag": "其他",
-      "type": "selector",
+        {
+      "tag": "美国",
+      "type": "urltest",
       "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30m",
+      "tolerance": 100,
+      "idle_timeout": "60m",
+      "interrupt_exist_connections": true
+    },
+    {
+      "tag": "德国",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30m",
+      "tolerance": 100,
+      "idle_timeout": "60m",
+      "interrupt_exist_connections": true
+    },
+    {
+      "tag": "英国",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30m",
+      "tolerance": 100,
+      "idle_timeout": "60m",
       "interrupt_exist_connections": true
     },
     {
@@ -265,10 +259,6 @@
         "outbound": "中国"
       },
       {
-        "rule_set": "geosite-google",
-        "outbound": "Google"
-      },
-      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "全局"
       }
@@ -296,14 +286,6 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
-        "download_detour": "全局",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-google",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "全局",
         "update_interval": "1d"
       },
