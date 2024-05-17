@@ -324,7 +324,7 @@
         "outbound": "Microsoft"
       },
       {
-        "rule_set": "geosite-Spotify",
+        "rule_set": "geosite-spotify",
         "outbound": "Spotify"
       },
       {
