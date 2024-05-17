@@ -1,9 +1,9 @@
 
 # 策略组相关
-pr: &pr {type: select, proxies: [ 日本, 香港, 台湾, 狮城, 韩国, 美国, 国内, Proxy, 其它]}
+pr: &pr {type: select, proxies: [ Proxy, 香港, 日本, 台湾, 狮城, 韩国, 美国, 国内, 其它]}
 #订阅更新和延迟测试
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
-u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 900, tolerance: 50}}
+u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
 
 
 # 订阅url
@@ -12,19 +12,31 @@ proxy-providers:
     <<: *p
     url: "https://rainyhush-box.hf.space/RainyHushBoxSub/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
 
+mode: rule
 ipv6: true
+global-ua: clash.meta
 log-level: info
 allow-lan: true
 mixed-port: 7890
 unified-delay: true
-tcp-concurrent: true
+tcp-concurrent: false
 keep-alive-interval: 1800
+find-process-mode: strict
 external-controller: 127.0.0.1:9090
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-
-find-process-mode: strict
 global-client-fingerprint: chrome
+
+geodata-mode: true
+geodata-loader: memconservative
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+
 
 profile:
   store-selected: true
@@ -32,6 +44,9 @@ profile:
 
 sniffer:
   enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
   sniff:
     HTTP:
       ports: [80, 8080-8880]
@@ -50,8 +65,8 @@ ntp:
   interval: 60
 
 tun:
-  enable: true  # enable 'true'
-  stack: system  # or 'gvisor'
+  enable: true
+  stack: system
   device: Meta
   mtu: 9000
   dns-hijack:
@@ -63,8 +78,10 @@ tun:
 # DNS配置
 dns:
   enable: true
-  listen: :1053
+  listen: 0.0.0.0:1053
   ipv6: true
+  use-hosts: true
+  use-system-hosts: true
   enhanced-mode: fake-ip
   fake-ip-range: 28.0.0.1/8
   fake-ip-filter:
@@ -77,58 +94,36 @@ dns:
     - 1.1.1.1
 # 服务器名称
   nameserver: 
-    - 1.1.1.1
-    - 223.5.5.5
-    - https://dns.cloudflare.com/dns-query
-    - https://dns.google/dns-query
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
+    - https://1.1.1.1/dns-query
+    - https://223.5.5.5/dns-query
 # 服务器策略
   nameserver-policy:
     "rule-set:cn_domain,private":
-      - "https://doh.pub/dns-query"
-      - "https://dns.alidns.com/dns-query"
+      - "https://223.5.5.5/dns-query"
     "rule-set:geolocation-!cn":
-      - "https://dns.cloudflare.com/dns-query"
-      - "https://dns.google/dns-query"
+      - "https://1.1.1.1/dns-query"
 proxies:
 proxy-groups:
-  - {name: Proxy, type: select, proxies: [香港, 台湾, 日本, 狮城, 韩国, 美国, 国内, 其它]}
-  - {name: GitHub, <<: *pr}
-  - {name: Microsoft, <<: *pr}
-  - {name: OpenAI, <<: *pr}
-  - {name: YouTube, <<: *pr}
-  - {name: Google, <<: *pr}
-  - {name: Telegram, <<: *pr}
-  - {name: Spotify, <<: *pr}
-  - {name: AdBlock, type: select, proxies: [REJECT, Proxy]}
+  - {name: Proxy, type: select, proxies: [香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它, 广告]}
+  - {name: 广告, type: select, proxies: [REJECT, Proxy]}
 # 地区分组
-  - {name: 国内, <<: *u, include-all-providers: true, filter: "(?i)济南|杭州|武汉|鞍山|广州|徐州|浙江"}
-  - {name: 香港, <<: *u, include-all-providers: true, filter: "(?i)港|hk|Hong Kong|hong kong"}
-  - {name: 台湾, <<: *u, include-all-providers: true, filter: "(?i)台|tw|TaiWan"}
-  - {name: 日本, <<: *u, include-all-providers: true, filter: "(?i)日|jp|Japan"}
-  - {name: 狮城, <<: *u, include-all-providers: true, filter: "(?i)(新|sg|Singapore)"}
-  - {name: 韩国, <<: *u, include-all-providers: true, filter: "(?i)(韩|kr|Korea)"}
-  - {name: 美国, <<: *u, include-all-providers: true, filter: "(?i)美|us|America|united states"}
-  - {name: 其它, <<: *u, include-all-providers: true, filter: "(?i)^(?!.*(?:🇭🇰|🇯🇵|🇺🇸|🇹🇼|🇰🇷|🇸🇬|🇨🇳|港|hk|Hong Kong|台|tw|TaiWan|日|jp|Japan|新|sg|Singapore|韩|kr|Korea|美|America|us|unitedstates|武汉|济南|杭州|鞍山|广州|徐州|浙江)).*"}
+  - {name: 国内, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
+  - {name: 香港, type: select, include-all-providers: true, filter: "(?i)香港|HK|Hong Kong"}
+  - {name: 台湾, type: select, include-all-providers: true, filter: "(?i)台湾|TW|TaiWan"}
+  - {name: 日本, type: select, include-all-providers: true, filter: "(?i)日本|JP|Japan"}
+  - {name: 狮城, type: select, include-all-providers: true, filter: "(?i)新加坡|SG|Singapore"}
+  - {name: 韩国, type: select, include-all-providers: true, filter: "(?i)韩国|KR|Korea"}
+  - {name: 美国, type: select, include-all-providers: true, filter: "(?i)美国|US|America"}
+  - {name: 德国, type: select, include-all-providers: true, filter: "(?i)德国|DE|Germany"}
+  - {name: 其它, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|韩国|KR|Korea|美国|US|America|德国|DE|Germany)).*"}
 rules:
-  - RULE-SET, category-ads-all_domain, AdBlock
+  - RULE-SET, category-ads-all_domain, 广告
   - RULE-SET, private, 国内
   - RULE-SET, cn_domain, 国内
-  - RULE-SET, github_domain, GitHub
-  - RULE-SET, microsoft_domain, Microsoft
-  - RULE-SET, openai_domain, OpenAI
-  - RULE-SET, youtube_domain, YouTube
-  - RULE-SET, google_domain, Google
-  - RULE-SET, telegram_domain, Telegram
-  - RULE-SET, spotify_domain, Spotify
   - RULE-SET, geolocation-!cn, Proxy
-  
-  - RULE-SET,google_ip,Google
-  - RULE-SET,telegram_ip,Telegram
   - RULE-SET,cn_ip,国内
-  - GEOSITE,CN,国内,no-resolve
-  - GEOIP,CN,国内,no-resolve
+  - GEOSITE,CN,国内
+  - GEOIP,CN,国内
   - MATCH,Proxy
 
 rule-anchor:
@@ -145,27 +140,6 @@ rule-providers:
   cn_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
-  github_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
-  microsoft_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.yaml"
-  openai_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.yaml"
-  youtube_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"
-  google_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
-  telegram_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"
-  spotify_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml"
   geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
@@ -173,9 +147,3 @@ rule-providers:
   cn_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
-  google_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"
-  telegram_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
