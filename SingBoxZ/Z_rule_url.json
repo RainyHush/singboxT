@@ -114,9 +114,10 @@
         "台湾",
         "韩国",
         "中国",
-        "其他"
+        "其他",
+        "block"
       ],
-      "default": "香港",
+      "default": "日本",
       "interrupt_exist_connections": true
     },
     {
@@ -129,7 +130,8 @@
         "台湾",
         "韩国",
         "中国",
-        "其他"
+        "其他",
+        "block"
       ],
       "default": "狮城",
       "interrupt_exist_connections": true
@@ -144,7 +146,8 @@
         "台湾",
         "韩国",
         "中国",
-        "其他"
+        "其他",
+        "block"
       ],
       "default": "香港",
       "interrupt_exist_connections": true
@@ -159,7 +162,8 @@
         "台湾",
         "韩国",
         "中国",
-        "其他"
+        "其他",
+        "block"
       ],
       "default": "香港",
       "interrupt_exist_connections": true
@@ -174,15 +178,36 @@
         "台湾",
         "韩国",
         "中国",
-        "其他"
+        "其他",
+        "block"
+      ],
+      "default": "狮城",
+      "interrupt_exist_connections": true
+    },
+    {
+      "tag": "OpenAI",
+      "type": "selector",
+      "outbounds": [
+        "香港",
+        "日本",
+        "狮城",
+        "台湾",
+        "韩国",
+        "中国",
+        "其他",
+        "block"
       ],
       "default": "狮城",
       "interrupt_exist_connections": true
     },
     {
       "tag": "中国",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30m",
+      "tolerance": 50,
+      "idle_timeout": "60m",
       "interrupt_exist_connections": true
     },
     {
@@ -237,8 +262,12 @@
     },
     {
       "tag": "其他",
-      "type": "selector",
+      "type": "urltest",
       "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "30m",
+      "tolerance": 50,
+      "idle_timeout": "60m",
       "interrupt_exist_connections": true
     },
     {
@@ -322,6 +351,10 @@
         "outbound": "Spotify"
       },
       {
+        "rule_set": "geosite-openai",
+        "outbound": "OpenAI"
+      },
+      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "全局"
       }
@@ -389,6 +422,14 @@
         "type": "remote",
         "format": "binary",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
+        "download_detour": "全局",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
         "download_detour": "全局",
         "update_interval": "1d"
       },
