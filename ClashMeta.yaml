@@ -1,6 +1,6 @@
 
 # 策略组相关
-pr: &pr {type: select, proxies: [ Proxy, 香港, 日本, 台湾, 狮城, 韩国, 美国, 国内, 其它]}
+pr: &pr {type: select, proxies: [ Proxy, 香港, 日本, 台湾, 狮城, 韩国, 国内, 其它]}
 #订阅更新和延迟测试
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
 u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
@@ -10,7 +10,7 @@ u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www
 proxy-providers:
   provider1:
     <<: *p
-    url: "https://rainyhush-box.hf.space/RainyHushBoxSub/download/collection/%E7%BB%84%E5%90%88%E8%AE%A2%E9%98%85?target=ClashMeta"
+    url: "https://rainyhush-rhk.hf.space/RAINIHUSHRHK/download/ZGJ?target=ClashMeta"
 
 mode: rule
 ipv6: true
@@ -111,10 +111,8 @@ proxy-groups:
   - {name: 狮城, type: select, include-all-providers: true, filter: "(?i)新加坡|SG|Singapore"}
   - {name: 台湾, type: select, include-all-providers: true, filter: "(?i)台湾|TW|TaiWan"}
   - {name: 韩国, type: select, include-all-providers: true, filter: "(?i)韩国|KR|Korea"}
-  - {name: 美国, type: select, include-all-providers: true, filter: "(?i)美国|US|America"}
-  - {name: 德国, type: select, include-all-providers: true, filter: "(?i)德国|DE|Germany"}
   - {name: 国内, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
-  - {name: 其它, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|韩国|KR|Korea|美国|US|America|德国|DE|Germany)).*"}
+  - {name: 其它, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|韩国|KR|Korea)).*"}
   - {name: 广告, type: select, proxies: [REJECT]}
 rules:
   - RULE-SET, category-ads-all_domain, 广告
