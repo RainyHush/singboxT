@@ -262,13 +262,8 @@
     },
     {
       "tag": "其他",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "30m",
-      "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "type": "selector",
+      "outbounds": []
     },
     {
       "tag": "广告",
