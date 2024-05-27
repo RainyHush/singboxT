@@ -117,8 +117,7 @@
         "其他",
         "block"
       ],
-      "default": "日本",
-      "interrupt_exist_connections": true
+      "default": "日本"
     },
     {
       "tag": "Google",
@@ -133,8 +132,7 @@
         "其他",
         "block"
       ],
-      "default": "狮城",
-      "interrupt_exist_connections": true
+      "default": "狮城"
     },
     {
       "tag": "GitHub",
@@ -149,8 +147,7 @@
         "其他",
         "block"
       ],
-      "default": "香港",
-      "interrupt_exist_connections": true
+      "default": "香港"
     },
     {
       "tag": "Microsoft",
@@ -165,8 +162,7 @@
         "其他",
         "block"
       ],
-      "default": "香港",
-      "interrupt_exist_connections": true
+      "default": "香港"
     },
     {
       "tag": "Spotify",
@@ -181,8 +177,7 @@
         "其他",
         "block"
       ],
-      "default": "狮城",
-      "interrupt_exist_connections": true
+      "default": "狮城"
     },
     {
       "tag": "OpenAI",
@@ -197,8 +192,7 @@
         "其他",
         "block"
       ],
-      "default": "狮城",
-      "interrupt_exist_connections": true
+      "default": "狮城"
     },
     {
       "tag": "中国",
@@ -207,8 +201,7 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
       "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "idle_timeout": "60m"
     },
     {
       "tag": "香港",
@@ -217,8 +210,7 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
       "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "idle_timeout": "60m"
     },
     {
       "tag": "日本",
@@ -227,8 +219,7 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
       "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "idle_timeout": "60m"
     },
     {
       "tag": "台湾",
@@ -237,8 +228,7 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
       "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "idle_timeout": "60m"
     },
     {
       "tag": "狮城",
@@ -247,8 +237,7 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
       "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "idle_timeout": "60m"
     },
     {
       "tag": "韩国",
@@ -257,8 +246,7 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "30m",
       "tolerance": 50,
-      "idle_timeout": "60m",
-      "interrupt_exist_connections": true
+      "idle_timeout": "60m"
     },
     {
       "tag": "其他",
@@ -271,8 +259,7 @@
       "outbounds": [
         "block",
         "全局"
-      ],
-      "interrupt_exist_connections": true
+      ]
     },
     {
       "type": "dns",
