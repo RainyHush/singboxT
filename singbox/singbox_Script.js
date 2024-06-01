@@ -45,6 +45,10 @@ config.outbounds.map(i => {
 		i.outbounds.push(...proxies.filter(p => /韩国|kr|KR|Korea/i.test(p.tag))
 			.map(p => p.tag))
 	}
+	if (['美国'].includes(i.tag)) {
+		i.outbounds.push(...proxies.filter(p => /美国|us|US|America/i.test(p.tag))
+			.map(p => p.tag))
+	}
 })
 
 
