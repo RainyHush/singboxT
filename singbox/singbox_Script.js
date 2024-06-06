@@ -49,6 +49,10 @@ config.outbounds.map(i => {
 		i.outbounds.push(...proxies.filter(p => /美国|us|US|America/i.test(p.tag))
 			.map(p => p.tag))
 	}
+	if (['AUTO'].includes(i.tag)) {
+		i.outbounds.push(...proxies.filter(p => !/巴基斯坦|BJ/i.test(p.tag))
+			.map(p => p.tag))
+	}
 })
 
 
