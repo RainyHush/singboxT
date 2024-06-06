@@ -249,6 +249,16 @@
       ]
     },
     {
+      "tag": "AUTO",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "15m",
+      "tolerance": 100,
+      "idle_timeout": "60m"
+    
+    },
+    {
       "type": "dns",
       "tag": "dns-out"
     },
