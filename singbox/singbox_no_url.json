@@ -236,6 +236,12 @@
       "outbounds": []
     },
     {
+      "tag": "德国",
+      "type": "selector",
+      "outbounds": []
+    
+    },
+    {
       "tag": "其他",
       "type": "selector",
       "outbounds": []

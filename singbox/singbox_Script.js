@@ -17,7 +17,7 @@ config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
   if (['其他'].includes(i.tag)) {
-    i.outbounds.push(...proxies.filter(p => !/香港|hk|HK|Hong Kong|浙江|徐州|广州|武汉|襄阳|鞍山|杭州|济南|台湾|tw|TW|TaiWan|日本|jp|JP|Japan|新加坡|狮城|sg|SG|Singapore|韩国|kr|KR|Korea|美国|us|US|America/i.test(p.tag))
+    i.outbounds.push(...proxies.filter(p => !/香港|hk|HK|Hong Kong|浙江|徐州|广州|武汉|襄阳|鞍山|杭州|济南|台湾|tw|TW|TaiWan|日本|jp|JP|Japan|新加坡|狮城|sg|SG|Singapore|德国|de|DE|Germany|韩国|kr|KR|Korea|美国|us|US|America/i.test(p.tag))
       .map(p => p.tag))
   }
   if (['香港'].includes(i.tag)) {
@@ -46,6 +46,10 @@ config.outbounds.map(i => {
   }
   if (['美国'].includes(i.tag)) {
     i.outbounds.push(...proxies.filter(p => /美国|us|US|America/i.test(p.tag))
+      .map(p => p.tag))
+  }
+  if (['德国'].includes(i.tag)) {
+    i.outbounds.push(...proxies.filter(p => /德国|de|DE|Germany/i.test(p.tag))
       .map(p => p.tag))
   }
   if (['AUTO'].includes(i.tag)) {
