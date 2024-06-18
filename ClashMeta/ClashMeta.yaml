@@ -20,7 +20,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: false
-keep-alive-interval: 1800
+keep-alive-interval: 60
 find-process-mode: strict
 external-controller: 127.0.0.1:9090
 external-ui: ui
@@ -115,7 +115,7 @@ proxy-groups:
   - {name: 德国, type: select, include-all-providers: true, filter: "(?i)德国|DE|Germany"}
   - {name: 国内, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
   - {name: 其它, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|德国|DE|Germany|美国|US|America|韩国|KR|Korea)).*"}
-  - {name: 广告, type: select, proxies: [REJECT]}
+  - {name: 广告, type: select, proxies: [REJECT, Proxy]}
 rules:
   - RULE-SET, category-ads-all_domain, 广告
   - RULE-SET, private, 国内
