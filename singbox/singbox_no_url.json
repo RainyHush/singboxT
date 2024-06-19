@@ -1,4 +1,4 @@
-    {
+{
   "log": {
     "level": "info",
     "timestamp": true
@@ -12,14 +12,12 @@
     "servers": [
       {
         "tag": "remote",
-        "address": "tls://1.1.1.1",
-        "address_strategy": "prefer_ipv4",
+        "address": "https://1.1.1.1/dns-query",
         "detour": "全局"
       },
       {
         "tag": "local",
         "address": "https://223.5.5.5/dns-query",
-        "address_strategy": "prefer_ipv4",
         "detour": "中国"
       },
       {
@@ -42,10 +40,7 @@
         "disable_cache": false
       },
       {
-        "rule_set": [
-        "geosite-cn",
-        "geoip-cn"
-        ],
+        "rule_set": "geosite-cn",
         "server": "local"
       },
       {
@@ -54,7 +49,7 @@
       },
       {
         "clash_mode": "global",
-        "server": "Proxy"
+        "server": "remote"
       },
       {
         "inbound": "tun",
@@ -80,10 +75,12 @@
     {
       "tag": "tun",
       "type": "tun",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::0/126",
+      "address": [
+        "172.19.0.0/30",
+      "fdfe:dcba:9876::0/126"
+      ],
       "mtu": 9000,
-      "stack": "system",
+      "stack": "mixed",
       "auto_route": true,
       "strict_route": true,
       "sniff": true,
@@ -91,7 +88,7 @@
         "http_proxy": {
           "enabled": true,
           "server": "127.0.0.1",
-          "server_port": 7890
+          "server_port": 1234
         }
       }
     },
@@ -99,7 +96,7 @@
       "tag": "mixed-in",
       "type": "mixed",
       "listen": "127.0.0.1",
-      "listen_port": 7890,
+      "listen_port": 1235,
       "sniff": true
     }
   ],
@@ -245,7 +242,7 @@
       "tag": "德国",
       "type": "selector",
       "outbounds": []
-    
+
     },
     {
       "tag": "其他",
@@ -268,7 +265,7 @@
       "interval": "15m",
       "tolerance": 100,
       "idle_timeout": "60m"
-    
+
     },
     {
       "type": "dns",
@@ -310,11 +307,15 @@
         "outbound": "广告"
       },
       {
-        "rule_set": [
-          "geosite-private",
-          "geoip-cn",
-          "geosite-cn"
-          ],
+        "rule_set": "geosite-cn",
+        "outbound": "中国"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "中国"
+      },
+      {
+        "rule_set": "geosite-private",
         "outbound": "中国"
       },
       {
@@ -458,4 +459,3 @@
     }
   }
 }
-
