@@ -121,32 +121,35 @@ proxy-groups:
   - {name: AUTO, <<: *u, include-all-providers: true,}
 rules:
   - RULE-SET, category-ads-all_domain, 广告
-  - RULE-SET, private, 国内
   - RULE-SET, cn_domain, 国内
+  - RULE-SET, cn_ip, 国内
+  - RULE-SET, private, 国内
+  - RULE-SET, google, Proxy
   - RULE-SET, geolocation-!cn, Proxy
-  - RULE-SET,cn_ip,国内
-  - GEOSITE,CN,国内
-  - GEOIP,CN,国内
-  - MATCH,Proxy
+  - GEOSITE, CN, 国内
+  - GEOIP, CN, 国内
+  - MATCH, Proxy
 
 rule-anchor:
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: yaml}
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: yaml}
+  ip: &ip {type: http, interval: 86400, proxy: Proxy, behavior: ipcidr, format: yaml}
+  domain: &domain {type: http, interval: 86400, proxy: Proxy, behavior: domain, format: yaml}
 rule-providers:
 # 域名
   category-ads-all_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.yaml"
-  private:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
   cn_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
-  geolocation-!cn:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
-# IP
   cn_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
+  private:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
+  google:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
+  geolocation-!cn:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
