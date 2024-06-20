@@ -108,6 +108,7 @@ proxies:
 proxy-groups:
   - {name: Proxy, type: select, proxies: [香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它]}
   - {name: Google, <<: *pr}
+  - {name: GitHub, <<: *pr}
 # 地区分组
   - {name: 香港, type: select, include-all-providers: true, filter: "(?i)香港|HK|Hong Kong"}
   - {name: 日本, type: select, include-all-providers: true, filter: "(?i)日本|JP|Japan"}
@@ -125,8 +126,8 @@ rules:
   - RULE-SET, cn_domain, 国内
   - RULE-SET, cn_ip, 国内
   - RULE-SET, private, 国内
-  - RULE-SET, google, Proxy
-  - RULE-SET, github, Proxy
+  - RULE-SET, google, Google
+  - RULE-SET, github, GitHub
   - RULE-SET, geolocation-!cn, Proxy
   - GEOSITE, CN, 国内
   - GEOIP, CN, 国内
