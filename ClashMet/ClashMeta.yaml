@@ -105,7 +105,6 @@ dns:
     "rule-set:geolocation-!cn,google,github":
       - "https://1.1.1.1/dns-query"
 proxies:
-  <<: *p
 proxy-groups:
   - {name: Proxy, type: select, proxies: [香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它]}
   - {name: Google, <<: *pr}
