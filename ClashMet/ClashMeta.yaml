@@ -102,7 +102,7 @@ dns:
   nameserver-policy:
     "rule-set:cn_domain,private":
       - "https://223.5.5.5/dns-query"
-    "rule-set:geolocation-!cn, google, github":
+    "rule-set:geolocation-!cn,google,github":
       - "https://1.1.1.1/dns-query"
 proxies:
 proxy-groups:
