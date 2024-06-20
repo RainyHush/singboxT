@@ -125,6 +125,7 @@ rules:
   - RULE-SET, cn_ip, 国内
   - RULE-SET, private, 国内
   - RULE-SET, google, Proxy
+  - RULE-SET, github, Proxy
   - RULE-SET, geolocation-!cn, Proxy
   - GEOSITE, CN, 国内
   - GEOIP, CN, 国内
@@ -150,6 +151,9 @@ rule-providers:
   google:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
+  github:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
   geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
