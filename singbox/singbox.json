@@ -76,10 +76,8 @@
       "tag": "tun",
       "type": "tun",
       "interface_name": "tun0",
-      "address": [
-      "172.19.0.0/30",
-      "fdfe:dcba:9876::0/126"
-      ],
+      "inet4_address": "172.19.0.0/30",
+      "inet6_address": "fdfe:dcba:9876::0/126",
       "mtu": 9000,
       "stack": "mixed",
       "auto_route": true,
@@ -117,7 +115,8 @@
         "Other",
         "block"
       ],
-      "default": "Japan"
+      "default": "Japan",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Google",
@@ -134,7 +133,8 @@
         "Other",
         "block"
       ],
-      "default": "Singapore"
+      "default": "Singapore",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "GitHub",
@@ -151,7 +151,8 @@
         "Other",
         "block"
       ],
-      "default": "Hong Kong"
+      "default": "Hong Kong",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Microsoft",
@@ -168,7 +169,8 @@
         "Other",
         "block"
       ],
-      "default": "Hong Kong"
+      "default": "Hong Kong",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Spotify",
@@ -185,7 +187,8 @@
         "Other",
         "block"
       ],
-      "default": "Singapore"
+      "default": "Singapore",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "OpenAI",
@@ -202,53 +205,62 @@
         "Other",
         "block"
       ],
-      "default": "Singapore"
+      "default": "Singapore",
+      "interrupt_exist_connections": true
     },
     {
       "tag": "China",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Hong Kong",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Japan",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "TaiWan",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Singapore",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Korea",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "America",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Germany",
       "type": "selector",
-      "outbounds": []
-
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "Other",
       "type": "selector",
-      "outbounds": []
+      "outbounds": [],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "ads",
@@ -256,7 +268,8 @@
       "outbounds": [
         "block",
         "Proxy"
-      ]
+      ],
+      "interrupt_exist_connections": true
     },
     {
       "tag": "AUTO",
@@ -265,8 +278,8 @@
       "url": "https://www.gstatic.com/generate_204",
       "interval": "15m",
       "tolerance": 100,
-      "idle_timeout": "60m"
-
+      "idle_timeout": "60m",
+      "interrupt_exist_connections": true
     },
     {
       "type": "dns",
@@ -275,6 +288,10 @@
     {
       "type": "block",
       "tag": "block"
+    },
+    {
+      "type": "direct",
+      "tag" : "direct"
     }
 
   ],
@@ -293,6 +310,10 @@
       {
         "network": "udp",
         "port": 443,
+        "outbound": "block"
+      },
+      {
+        "protocol": "quic",
         "outbound": "block"
       },
       {
