@@ -37,7 +37,7 @@
       {
         "outbound": "any",
         "server": "local",
-        "disable_cache": false
+        "disable_cache": true
       },
       {
         "rule_set": "geosite-cn",
@@ -48,7 +48,7 @@
         "server": "local"
       },
       {
-        "clash_mode": "global",
+        "clash_mode": "Global",
         "server": "remote"
       },
       {
@@ -300,7 +300,7 @@
         "outbound": "中国"
       },
       {
-        "clash_mode": "global",
+        "clash_mode": "Global",
         "outbound": "Proxy"
       },
       {
@@ -308,15 +308,11 @@
         "outbound": "广告"
       },
       {
-        "rule_set": "geosite-cn",
-        "outbound": "中国"
-      },
-      {
-        "rule_set": "geoip-cn",
-        "outbound": "中国"
-      },
-      {
-        "rule_set": "geosite-private",
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn",
+          "geosite-private"
+         ],
         "outbound": "中国"
       },
       {
@@ -324,12 +320,11 @@
         "outbound": "中国"
       },
       {
-        "rule_set": "geosite-google",
-        "outbound": "Google"
-      },
-      {
-        "rule_set": "geoip-google",
-        "outbound": "Google"
+        "rule_set": [
+          "geosite-google",
+          "geoip-google"
+         ],
+        "outbound": "google"
       },
       {
         "rule_set": "geosite-github",
