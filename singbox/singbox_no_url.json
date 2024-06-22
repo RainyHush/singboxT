@@ -324,7 +324,7 @@
           "geosite-google",
           "geoip-google"
          ],
-        "outbound": "google"
+        "outbound": "Google"
       },
       {
         "rule_set": "geosite-github",
