@@ -1,6 +1,8 @@
 {
   "log": {
-    "level": "info",
+    "disabled": false,
+    "level": "debug",
+    "output": "box.log",
     "timestamp": true
   },
   "dns": {
@@ -66,7 +68,7 @@
       }
     ],
     "final": "remote",
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "disable_cache": false,
     "disable_expire": false,
     "independent_cache": true
@@ -76,8 +78,10 @@
       "tag": "tun",
       "type": "tun",
       "interface_name": "tun0",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::0/126",
+      "address": [
+      "172.19.0.0/30",
+      "fdfe:dcba:9876::0/126"
+      ],
       "mtu": 9000,
       "stack": "mixed",
       "auto_route": true,
@@ -276,7 +280,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.gstatic.com/generate_204",
-      "interval": "15m",
+      "interval": "30m",
       "tolerance": 100,
       "idle_timeout": "60m",
       "interrupt_exist_connections": true
@@ -310,10 +314,6 @@
       {
         "network": "udp",
         "port": 443,
-        "outbound": "block"
-      },
-      {
-        "protocol": "quic",
         "outbound": "block"
       },
       {
