@@ -313,9 +313,6 @@
       },
       {
         "network": "udp",
-        "outbound": "block"
-      },
-      {
         "port": 443,
         "outbound": "block"
       },
