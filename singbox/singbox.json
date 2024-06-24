@@ -300,7 +300,7 @@
 
   ],
   "route": {
-    "auto_detect_interface": true,
+    "auto_detect_interface": false,
     "override_android_vpn": true,
     "rules": [
       {
@@ -313,6 +313,9 @@
       },
       {
         "network": "udp",
+        "outbound": "block"
+      },
+      {
         "port": 443,
         "outbound": "block"
       },
