@@ -301,6 +301,7 @@
   ],
   "route": {
     "auto_detect_interface": false,
+    "default_interface": "en0",
     "override_android_vpn": true,
     "rules": [
       {
