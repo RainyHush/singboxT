@@ -305,11 +305,11 @@
     "rules": [
       {
         "protocol": "dns",
-        "outbound": "dns-out"
+        "outbound": "China"
       },
       {
         "port": 53,
-        "outbound": "dns-out"
+        "outbound": "China"
       },
       {
         "network": "udp",
