@@ -51,9 +51,10 @@
           "geosite-private"
         ],
         "rule_set_ipcidr_match_source": true,
+        "rule_set_ip_cidr_accept_empty": true,
         "invert": false,
         "outbound": [
-          "China"
+          "any"
         ],
         "server": "local",
         "disable_cache": false,
