@@ -76,9 +76,9 @@ dns:
     - 1.1.1.1
 # 服务器策略
   nameserver-policy:
-    "rule-set:cn_domain,private":
+    "rule-set:geosite-cn,private":
       - "https://dns.alidns.com/dns-query"
-    "rule-set:geolocation-!cn,google,github":
+    "rule-set:geolocation-!cn,geosite-google,geosite-github":
       - "https://cloudflare-dns.com/dns-query"
 # 服务器名称
   nameserver:
