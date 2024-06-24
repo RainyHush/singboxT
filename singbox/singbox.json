@@ -38,8 +38,7 @@
       },
       {
         "outbound": "any",
-        "server": "local",
-        "disable_cache": true
+        "server": "local"
       },
       {
         "ip_is_private": true,
@@ -76,7 +75,7 @@
           "AAAA"
         ],
         "server": "fakeip",
-        "rewrite_ttl": 1
+        "rewrite_ttl": 20
       },
       {
         "rule_set": "geosite-geolocation-!cn",
