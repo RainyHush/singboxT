@@ -21,7 +21,7 @@ log-level: info
 allow-lan: true
 mixed-port: 7890
 unified-delay: true
-tcp-concurrent: false
+tcp-concurrent: true
 keep-alive-interval: 30
 interface-name: en0
 find-process-mode: strict
@@ -88,9 +88,11 @@ dns:
     - https://dns.alidns.com/dns-query
 #TUN配置
 tun:
+  name: tun-in
+  type: tun
   enable: true
   stack: mixed
-  device: Meta0
+  device: en0
   auto-route: true
   auto-redirect: true
   mtu: 9000
@@ -118,6 +120,7 @@ proxy-groups:
   - {name: 广告, type: select, proxies: [REJECT, Proxy]}
   - {name: AUTO, <<: *u, include-all-providers: true,}
 rules:
+  - GEOSITE, cn, 国内
   - RULE-SET, geosite-category-ads-all, 广告
   - RULE-SET, geosite-cn, 国内
   - RULE-SET, geoip-cn, 国内
@@ -125,8 +128,8 @@ rules:
   - RULE-SET, geosite-google, Google
   - RULE-SET, geosite-github, GitHub
   - RULE-SET, geolocation-!cn, Proxy
-  - GEOSITE, CN, 国内
-  - GEOIP, CN, 国内
+
+  - GEOIP, cn, 国内
   - MATCH, Proxy
 
 rule-anchor:
