@@ -1,13 +1,9 @@
-
 # 策略组相关
 pr: &pr {type: select, proxies: [ Proxy, Hong Kong, Japan, TaiWan, Singapore, Korea, America, Germany, China, Other]}
-
 #订阅更新
 p: &p {type: http, interval: 43200, proxy: Proxy, health-check: {enable: false, url: https://www.gstatic.com/generate_204, interval: 3600}}
 #延迟测试
 u: &u {type: url-test, health-check: {enable: true, lazy: false, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
-
-
 # 订阅url
 proxy-providers:
   provider1:
@@ -26,9 +22,7 @@ keep-alive-interval: 60
 interface-name: en0
 find-process-mode: strict
 global-client-fingerprint: chrome
-
 external-controller: 127.0.0.1:9090
-
 #外部geo文件
 geodata-mode: false
 geodata-loader: standard
@@ -39,7 +33,6 @@ geox-url:
   geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
   mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
   asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
-
 profile:
   store-selected: true
   store-fake-ip: true
@@ -103,7 +96,6 @@ tun:
     - "tcp://any:53"
   auto-detect-interface: true
   strict-route: true
-
 proxies:
 proxy-groups:
   - {name: Proxy, type: select, proxies: [Hong Kong, Japan, TaiWan, Singapore, Korea, America, Germany, China, Other]}
@@ -126,23 +118,21 @@ proxy-groups:
   - {name: ADS, type: select, proxies: [REJECT, Proxy]}
   - {name: AUTO, <<: *u, include-all-providers: true,}
 rules:
-  - RULE-SET, geosite-category-ads-all, ADS
-  - RULE-SET, geosite-google, Google
-  - RULE-SET, geoip-google, Google
-  - RULE-SET, geosite-github, GitHub
-  - RULE-SET, geosite-youtube, YouTube
-  - RULE-SET, geosite-spotify, Spotify
-  - RULE-SET, geosite-telegram, Telegram
-  - RULE-SET, geoip-telegram, Telegram
-  - RULE-SET, geosite-microsoft, Microsoft
-  - RULE-SET, geosite-geolocation-!cn, Proxy
- 
-  - RULE-SET, geosite-cn, China
-  - RULE-SET, geoip-cn, China
-  - RULE-SET, geosite-private, China
-  - GEOIP, lan, China, no-resolve
-  - MATCH, Proxy
-
+  - RULE-SET,geosite-category-ads-all,ADS
+  - RULE-SET,geosite-google,Google
+  - RULE-SET,geoip-google,Google
+  - RULE-SET,geosite-github,GitHub
+  - RULE-SET,geosite-youtube,YouTube
+  - RULE-SET,geosite-spotify,Spotify
+  - RULE-SET,geosite-telegram,Telegram
+  - RULE-SET,geoip-telegram,Telegram
+  - RULE-SET,geosite-microsoft,Microsoft
+  - RULE-SET,geosite-geolocation-!cn,Proxy
+  - RULE-SET,geosite-cn,China
+  - RULE-SET,geoip-cn,China
+  - RULE-SET,geosite-private,China
+  - GEOIP,lan,China,no-resolve
+  - MATCH,Proxy
 rule-anchor:
   ip: &ip {type: http, interval: 86400, proxy: Proxy, behavior: ipcidr, format: yaml}
   domain: &domain {type: http, interval: 86400, proxy: Proxy, behavior: domain, format: yaml}
@@ -178,8 +168,6 @@ rule-providers:
   geosite-geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
-
-
 # ip
   geoip-cn:
     <<: *ip
