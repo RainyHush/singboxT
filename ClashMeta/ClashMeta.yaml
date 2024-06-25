@@ -3,7 +3,7 @@
 pr: &pr {type: select, proxies: [ Proxy, Hong Kong, Japan, TaiWan, Singapore, Korea, America, Germany, China, Other]}
 
 #订阅更新
-p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
+p: &p {type: http, interval: 43200, proxy: Proxy, health-check: {enable: false, url: https://www.gstatic.com/generate_204, interval: 3600}}
 #延迟测试
 u: &u {type: url-test, health-check: {enable: true, lazy: false, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
 
@@ -22,7 +22,7 @@ allow-lan: true
 mixed-port: 7890
 unified-delay: true
 tcp-concurrent: true
-keep-alive-interval: 30
+keep-alive-interval: 60
 interface-name: en0
 find-process-mode: strict
 global-client-fingerprint: chrome
