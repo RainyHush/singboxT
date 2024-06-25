@@ -1,11 +1,11 @@
 
 # 策略组相关
-pr: &pr {type: select, proxies: [ Proxy, 香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它]}
+pr: &pr {type: select, proxies: [ Proxy, Hong Kong, Japan, TaiWan, Singapore, Korea, America, Germany, China, Other]}
 
 #订阅更新
 p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
 #延迟测试
-u: &u {type: url-test, health-check: {enable: true, lazy: true, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
+u: &u {type: url-test, health-check: {enable: true, lazy: false, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
 
 
 # 订阅url
@@ -77,9 +77,9 @@ dns:
 # 服务器策略
   nameserver-policy:
     "rule-set:geosite-cn,private":
-      - "https://dns.alidns.com/dns-query"
-    "rule-set:geolocation-!cn,geosite-google,geosite-github":
-      - "https://cloudflare-dns.com/dns-query"
+      - "https://dns.alidns.com/dns-query#China"
+    "rule-set:geosite-geolocation-!cn":
+      - "https://cloudflare-dns.com/dns-query#Proxy"
 # 服务器名称
   nameserver:
     - https://cloudflare-dns.com/dns-query
@@ -104,32 +104,41 @@ tun:
 
 proxies:
 proxy-groups:
-  - {name: Proxy, type: select, proxies: [香港, 日本, 台湾, 狮城, 韩国, 美国, 德国, 国内, 其它]}
+  - {name: Proxy, type: select, proxies: [Hong Kong, Japan, TaiWan, Singapore, Korea, America, Germany, China, Other]}
   - {name: Google, <<: *pr}
   - {name: GitHub, <<: *pr}
+  - {name: YouTube, <<: *pr}
+  - {name: Spotify, <<: *pr}
+  - {name: Telegram, <<: *pr}
+  - {name: Microsoft, <<: *pr}
 # 地区分组
-  - {name: 香港, type: select, include-all-providers: true, filter: "(?i)香港|HK|Hong Kong"}
-  - {name: 日本, type: select, include-all-providers: true, filter: "(?i)日本|JP|Japan"}
-  - {name: 狮城, type: select, include-all-providers: true, filter: "(?i)新加坡|SG|Singapore"}
-  - {name: 台湾, type: select, include-all-providers: true, filter: "(?i)台湾|TW|TaiWan"}
-  - {name: 韩国, type: select, include-all-providers: true, filter: "(?i)韩国|KR|Korea"}
-  - {name: 美国, type: select, include-all-providers: true, filter: "(?i)美国|US|America"}
-  - {name: 德国, type: select, include-all-providers: true, filter: "(?i)德国|DE|Germany"}
-  - {name: 国内, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
-  - {name: 其它, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|德国|DE|Germany|美国|US|America|韩国|KR|Korea)).*"}
-  - {name: 广告, type: select, proxies: [REJECT, Proxy]}
+  - {name: Hong Kong, type: select, include-all-providers: true, filter: "(?i)香港|HK|Hong Kong"}
+  - {name: Japan, type: select, include-all-providers: true, filter: "(?i)日本|JP|Japan"}
+  - {name: Singapore, type: select, include-all-providers: true, filter: "(?i)新加坡|SG|Singapore"}
+  - {name: TaiWan, type: select, include-all-providers: true, filter: "(?i)台湾|TW|TaiWan"}
+  - {name: Korea, type: select, include-all-providers: true, filter: "(?i)韩国|KR|Korea"}
+  - {name: America, type: select, include-all-providers: true, filter: "(?i)美国|US|America"}
+  - {name: Germany, type: select, include-all-providers: true, filter: "(?i)德国|DE|Germany"}
+  - {name: China, type: select, include-all-providers: true, filter: "(?i)浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南"}
+  - {name: Other, type: select, include-all-providers: true, filter: "(?i)^(?!.*(?:浙江|徐州|广州|鞍山|襄阳|武汉|杭州|济南|香港|HK|Hong Kong|台湾|TW|TaiWan|日本|JP|Japan|新加坡|SG|Singapore|德国|DE|Germany|美国|US|America|韩国|KR|Korea)).*"}
+  - {name: ADS, type: select, proxies: [REJECT, Proxy]}
   - {name: AUTO, <<: *u, include-all-providers: true,}
 rules:
-  - GEOSITE, cn, 国内
-  - RULE-SET, geosite-category-ads-all, 广告
-  - RULE-SET, geosite-cn, 国内
-  - RULE-SET, geoip-cn, 国内
-  - RULE-SET, private, 国内
+  - RULE-SET, geosite-category-ads-all, ADS
   - RULE-SET, geosite-google, Google
+  - RULE-SET, geoip-google, Google
   - RULE-SET, geosite-github, GitHub
-  - RULE-SET, geolocation-!cn, Proxy
-
-  - GEOIP, cn, 国内
+  - RULE-SET, geosite-youtube, YouTube
+  - RULE-SET, geosite-spotify, Spotify
+  - RULE-SET, geosite-telegram, Telegram
+  - RULE-SET, geoip-telegram, Telegram
+  - RULE-SET, geosite-microsoft, Microsoft
+  - RULE-SET, geosite-geolocation-!cn, Proxy
+ 
+  - RULE-SET, geosite-cn, China
+  - RULE-SET, geoip-cn, China
+  - RULE-SET, geosite-private, China
+  - GEOIP, lan, China, no-resolve
   - MATCH, Proxy
 
 rule-anchor:
@@ -143,10 +152,7 @@ rule-providers:
   geosite-cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
-  geoip-cn:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
-  private:
+  geosite-private:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
   geosite-google:
@@ -155,6 +161,31 @@ rule-providers:
   geosite-github:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
-  geolocation-!cn:
+  geosite-spotify:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml"
+  geosite-youtube:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"
+  geosite-telegram:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"
+  geosite-microsoft:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.yaml"
+  geosite-geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
+
+
+# ip
+  geoip-cn:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
+  geoip-google:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"
+  geoip-telegram:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
+
