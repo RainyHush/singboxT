@@ -228,6 +228,24 @@
       "interrupt_exist_connections": true
     },
     {
+      "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "Hong Kong",
+        "Japan",
+        "Singapore",
+        "TaiWan",
+        "Korea",
+        "America",
+        "Germany",
+        "China",
+        "Other",
+        "block"
+      ],
+      "default": "Singapore",
+      "interrupt_exist_connections": true
+    },
+    {
       "tag": "China",
       "type": "selector",
       "outbounds": [],
@@ -341,18 +359,6 @@
       },
       {
         "rule_set": [
-          "geoip-cn",
-          "geosite-cn",
-          "geosite-private"
-         ],
-        "outbound": "China"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "China"
-      },
-      {
-        "rule_set": [
           "geosite-google",
           "geoip-google"
          ],
@@ -375,32 +381,32 @@
         "outbound": "OpenAI"
       },
       {
+        "rule_set": "geosite-telegram",
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn",
+          "geosite-private"
+         ],
+        "outbound": "China"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "China"
+      },
+      {
         "rule_set": "geosite-geolocation-!cn",
         "outbound": "Proxy"
       }
     ],
     "rule_set": [
       {
-        "tag": "geosite-private",
+        "tag": "geosite-category-ads-all",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geoip-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
-        "download_detour": "Proxy",
-        "update_interval": "1d"
-      },
-      {
-        "tag": "geosite-cn",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
@@ -453,18 +459,50 @@
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-geolocation-!cn",
+        "tag": "geosite-telegram",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       },
       {
-        "tag": "geosite-category-ads-all",
+        "tag": "geoip-telegram",
         "type": "remote",
         "format": "binary",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-private",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+        "download_detour": "Proxy",
+        "update_interval": "1d"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
         "download_detour": "Proxy",
         "update_interval": "1d"
       }
