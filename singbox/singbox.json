@@ -327,10 +327,6 @@
         "outbound": "China"
       },
       {
-        "network": "udp",
-        "outbound": "block"
-      },
-      {
         "clash_mode": "direct",
         "outbound": "China"
       },
