@@ -68,7 +68,7 @@
         "server": "remote"
       },
       {
-        "inbound": "tun-in",
+        "inbound": "tun",
         "query_type": [
           "A",
           "AAAA"
@@ -89,7 +89,7 @@
   },
   "inbounds": [
     {
-      "tag": "tun-in",
+      "tag": "tun",
       "type": "tun",
       "interface_name": "tun0",
       "address": [

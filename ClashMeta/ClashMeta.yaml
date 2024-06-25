@@ -1,7 +1,7 @@
 # 策略组相关
 pr: &pr {type: select, proxies: [ Proxy, Hong Kong, Japan, TaiWan, Singapore, Korea, America, Germany, China, Other]}
 #订阅更新
-p: &p {type: http, interval: 43200, proxy: Proxy, health-check: {enable: false, url: https://www.gstatic.com/generate_204, interval: 3600}}
+p: &p {type: http, interval: 43200, proxy: Proxy, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 3600}}
 #延迟测试
 u: &u {type: url-test, health-check: {enable: true, lazy: false, url: https://www.gstatic.com/generate_204, interval: 1800, tolerance: 50}}
 # 订阅url
@@ -59,6 +59,7 @@ ntp:
 # DNS配置
 dns:
   enable: true
+  prefer-h3: true
   listen: 0.0.0.0:1053
   ipv6: true
   use-hosts: true
@@ -67,20 +68,20 @@ dns:
   fake-ip-range: 28.0.0.1/8
 # 默认DNS
   default-nameserver:
-    - 223.5.5.5
-    - 1.1.1.1
+    - "https://223.5.5.5/dns-query#China&h3=true"
+    - "https://1.1.1.1/dns-query#Proxy&h3=true"
 # 服务器策略
   nameserver-policy:
-    "rule-set:geosite-cn,geosite-private":
-      - "https://dns.alidns.com/dns-query#China"
-    "rule-set:geosite-geolocation-!cn":
-      - "https://cloudflare-dns.com/dns-query#Proxy"
+    "rule-set:cn,private":
+      - "https://dns.alidns.com/dns-query#China&h3=true"
+    "rule-set:geolocation-!cn,microsoft,telegram,spotify,youtube,github,google":
+      - "https://cloudflare-dns.com/dns-query#Proxy&h3=true"
 # 服务器名称
   nameserver:
-    - https://cloudflare-dns.com/dns-query
-    - https://dns.alidns.com/dns-query
+    - "https://cloudflare-dns.com/dns-query#Proxy&h3=true"
+    - "https://dns.alidns.com/dns-query#China&h3=true"
   proxy-server-nameserver:
-    - https://dns.alidns.com/dns-query
+    - "https://dns.alidns.com/dns-query#China&h3=true"
 #TUN配置
 tun:
   name: tun-in
@@ -118,19 +119,19 @@ proxy-groups:
   - {name: ADS, type: select, proxies: [REJECT, Proxy]}
   - {name: AUTO, <<: *u, include-all-providers: true,}
 rules:
-  - RULE-SET,geosite-category-ads-all,ADS
-  - RULE-SET,geosite-google,Google
-  - RULE-SET,geoip-google,Google
-  - RULE-SET,geosite-github,GitHub
-  - RULE-SET,geosite-youtube,YouTube
-  - RULE-SET,geosite-spotify,Spotify
-  - RULE-SET,geosite-telegram,Telegram
-  - RULE-SET,geoip-telegram,Telegram
-  - RULE-SET,geosite-microsoft,Microsoft
-  - RULE-SET,geosite-geolocation-!cn,Proxy
-  - RULE-SET,geosite-cn,China
-  - RULE-SET,geoip-cn,China
-  - RULE-SET,geosite-private,China
+  - RULE-SET,category-ads-all,ADS
+  - RULE-SET,google,Google
+  - RULE-SET,google_ip,Google
+  - RULE-SET,github,GitHub
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,spotify,Spotify
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,telegram_ip,Telegram
+  - RULE-SET,microsoft,Microsoft
+  - RULE-SET,geolocation-!cn,Proxy
+  - RULE-SET,cn,China
+  - RULE-SET,cn_ip,China
+  - RULE-SET,private,China
   - GEOIP,lan,China,no-resolve
   - MATCH,Proxy
 rule-anchor:
@@ -138,44 +139,44 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, proxy: Proxy, behavior: domain, format: yaml}
 rule-providers:
 # 域名
-  geosite-category-ads-all:
+  category-ads-all:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.yaml"
-  geosite-cn:
+  cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.yaml"
-  geosite-private:
+  private:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.yaml"
-  geosite-google:
+  google:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.yaml"
-  geosite-github:
+  github:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.yaml"
-  geosite-spotify:
+  spotify:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.yaml"
-  geosite-youtube:
+  youtube:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.yaml"
-  geosite-telegram:
+  telegram:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.yaml"
-  geosite-microsoft:
+  microsoft:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.yaml"
-  geosite-geolocation-!cn:
+  geolocation-!cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.yaml"
 # ip
-  geoip-cn:
+  cn_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.yaml"
-  geoip-google:
+  google_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.yaml"
-  geoip-telegram:
+  telegram_ip:
     <<: *ip
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.yaml"
 
