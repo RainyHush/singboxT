@@ -2,9 +2,7 @@
   "log": {
     "disabled": false,
     "output": "box.log",
-    "level": "info",
-    "timestamp": true
-
+    "level": "info"
   },
   "dns": {
     "fakeip": {
