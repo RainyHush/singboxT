@@ -4,6 +4,7 @@
     "output": "box.log",
     "level": "info",
     "timestamp": true
+
   },
   "dns": {
     "fakeip": {
